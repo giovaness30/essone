@@ -4,7 +4,7 @@ Theme URI: https://wordpress.org
 Author: Giovane Sedano
 Author URI: https://wordpress.org/
 Description: Segundo site de desenvolvimento Essystem
-Version: 1.0
+Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -37,7 +37,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 /*### END ###*/
 
 /*### HOME ###*/
-
 .essone-out-of-stock{
     color: red;
 }
