@@ -1,0 +1,45 @@
+/*
+Theme Name: Essystem One
+Theme URI: https://wordpress.org
+Author: Essystem Team
+Author URI: https://wordpress.org/
+Description: Segundo site de desenvolvimento Essystem
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: essone
+Tags: 
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+/*### Header ###*/
+
+/*### END ###*/
+
+/*### Home ###*/
+
+
+/*### END ###*/
+
+/*### Woocommer ###*/
+
+/*Centraliza conteudo da lista de produtos*/
+.woocommerce ul.products li.first, .woocommerce-page ul.products li{
+    text-align: center;
+}
+.woocommerce ul.products li.last, .woocommerce-page ul.products li{
+    text-align: center;
+}
+.woocommerce ul.products li, .woocommerce-page ul.products li{
+    text-align: center;
+}
+
+
+/*### END ###*/
+
+/*### Footer ###*/
+/*### END ###*/
+
+/**/
+/*### END ###*/
+
