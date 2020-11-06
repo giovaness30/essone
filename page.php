@@ -1,5 +1,6 @@
 <?php get_header();?>
-<div class="album py-5 bg-light">
+
+<div class="album py-2">
 	<div class="container">
 		<div class="row">
 			<div class="altcont col-lg-12">

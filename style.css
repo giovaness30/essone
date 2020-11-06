@@ -1,7 +1,7 @@
 /*
 Theme Name: Essystem One
 Theme URI: https://wordpress.org
-Author: Essystem Team
+Author: Giovane Sedano
 Author URI: https://wordpress.org/
 Description: Segundo site de desenvolvimento Essystem
 Version: 1.0
@@ -12,16 +12,40 @@ Tags:
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
-/*### Header ###*/
+/*### HEADER ###*/
+
+/* Nome do blog e descrição */
+ .blog-title {
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+.blog-description {
+    font-size: 1.1rem;
+    color: #999;
+}
+.logo-header{
+    width: 230px;
+}
+
+@media (min-width: 40em) {
+    .blog-title {
+    font-size: 3.5rem;
+    }
+}
 
 /*### END ###*/
 
-/*### Home ###*/
+/*### HOME ###*/
+
+.essone-out-of-stock{
+    color: red;
+}
 
 
 /*### END ###*/
 
-/*### Woocommer ###*/
+/*### WOOCOMMERCE ###*/
 
 /*Centraliza conteudo da lista de produtos*/
 .woocommerce ul.products li.first, .woocommerce-page ul.products li{
@@ -37,7 +61,24 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 /*### END ###*/
 
-/*### Footer ###*/
+/*### FOOTER ###*/
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f4f4f4d4;
+    border-top: .05rem solid #e5e5e5;
+  }
+.blog-footer p:last-child {
+margin-bottom: 0;
+}
+
+/*### END ###*/
+
+/*### MEDIA (ALTERAÇÔES PARA LAYOUTs MOBILE) ###*/
+
+
 /*### END ###*/
 
 /**/

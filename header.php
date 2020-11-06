@@ -11,22 +11,68 @@
 
 </head>
     <body <?php body_class(); ?>>
+
         <header>
 
-            <a class="text-muted" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <div class="row justify-content-center align-items-center px-5">
 
-                <?php 
-                    $custom_logo_id = get_theme_mod('custom_logo');
-                    $logo = wp_get_attachment_image_src( $custom_logo_id, 'full');
+                <!-- Logo do site -->
+                <div class="col-12 col-md-3 d-flex justify-content-center py-2"> 
 
-                    if ( has_custom_logo() ){
-                        echo '<img src="'. esc_url($logo[0]) . '"class="img-fluid">';
-                    } else {
-                        echo '<h1>' . get_bloginfo('name'), '</h1>';
-                        echo '<p class="lead">' . get_bloginfo('description') . '</p>';
-                    }
-                ?>
+                    <a class="text-muted" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 
-            </a>
+                        <?php 
+                            $custom_logo_id = get_theme_mod('custom_logo');
+                            $logo = wp_get_attachment_image_src( $custom_logo_id, 'full');
+
+                            if ( has_custom_logo() ){
+                                echo '<img src="'. esc_url($logo[0]) . '"class="logo-header img-fluid">';
+                            } else {
+                                echo '<h1>' . get_bloginfo('name'), '</h1>';
+                                echo '<p class="lead">' . get_bloginfo('description') . '</p>';
+                            }
+                        ?>
+
+                    </a>
+
+                </div>
+
+                <!-- widget central header -->
+                <?php
+ 
+                    if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
+                        <div class="col-md-6 col-12">
+                            <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
+                        </div>
+                    
+                <?php endif; ?>
+                
+                <!-- widget direito header -->
+                <?php
+ 
+                    if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
+                        <div class="col-md-3 col-10">
+                            <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
+                        </div>
+                    
+                <?php endif; ?>
+
+                <!-- <div class="header-widght col-10 col-md-3 py-1 d-flex justify-content-around align-items-center">
+
+					<?php dynamic_sidebar('header-widght'); ?>
+					
+				</div> -->
+
+            </div>
 
         </header>
+
+        <div id="menuprincipal" class="col-12 border-top border-bottom justify-content-center py-0">
+		
+			<?php wp_nav_menu (array ('theme_location' => 'header-menu')); ?>
+			
+        </div>
+        <div class="album py-3">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-12">
