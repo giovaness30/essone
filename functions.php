@@ -10,7 +10,10 @@ add_action('after_setup_theme', 'essone_title_tag');
 function load_stylesheets()
 {
 	wp_register_style('stylesheet', get_template_directory_uri() . '/style.css', '', 1, 'all');
-	wp_enqueue_style('stylesheet');
+  wp_enqueue_style('stylesheet');
+  
+  wp_register_style('stylesheet-cart', get_template_directory_uri() . '/inc/css/style-cart.css', '', 1, 'all');
+	wp_enqueue_style('stylesheet-cart');
 
 }
 add_action('wp_enqueue_scripts', 'load_stylesheets');
@@ -69,7 +72,7 @@ function center_header_sidebar() {
    array (
        'name' => __( 'Espaço Central do Cabeçalho "header"', 'essone'),
        'id' => 'center_header_sidebar',
-       'description' => __( 'Center Header', 'essone' ),
+       'description' => __( 'Center Header essone theme', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
        'before_title' => '<h3 class="widget-title">',
@@ -79,15 +82,14 @@ function center_header_sidebar() {
  }
  add_action( 'widgets_init', 'center_header_sidebar' );
 
-
 //widget right header
 function right_header_sidebar() {
   register_sidebar(
    array (
        'name' => __( 'Espaço Direito do Cabeçalho "header"', 'essone'),
        'id' => 'right_header_sidebar',
-       'description' => __( 'Right Header', 'essone' ),
-       'before_widget' => '<div class="widget-content">',
+       'description' => __( 'Right Header essone theme shotcodes = [cartEss][user-icon][whats-icon]', 'essone' ),
+       'before_widget' => '<div class="widget-content" style="padding-left:2em;">',
        'after_widget' => "</div>",
        'before_title' => '<h3 class="widget-title">',
        'after_title' => '</h3>',
@@ -102,7 +104,7 @@ function footer1_sidebar() {
    array (
        'name' => __( 'Rodape 1', 'essone'),
        'id' => 'footer1_sidebar',
-       'description' => __( 'Footer 1', 'essone' ),
+       'description' => __( 'Footer 1 essone theme', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
        'before_title' => '<h3 class="widget-title">',
@@ -111,6 +113,29 @@ function footer1_sidebar() {
   );
  }
  add_action( 'widgets_init', 'footer1_sidebar' );
+
+ // Adiciona CSS dimanico ao tema
+//  if(!function_exists('style_options')){
+//    function style_options($wp){
+//        header('Content-Type: text/css');
+//        require dirname(__FILE__) . '/style-options.php';
+
+//        exit;
+//    }
+//    add_action('parse_request', 'style_options');
+//  }
+
+function theme_enqueue_styles() {
+  wp_enqueue_style('dynamic-css', admin_url('admin-ajax.php') . '?action=dynamic_css', null, null);
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+function dynamic_css_action() {
+  include ( 'style-options.php' );
+  exit;
+}
+add_action('wp_ajax_dynamic_css', 'dynamic_css_action');
+add_action('wp_ajax_nopriv_dynamic_css', 'dynamic_css_action');
 
 //######################### ALTERAÇÔES WOOCOMMERCE #########################//
 

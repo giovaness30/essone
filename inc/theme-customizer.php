@@ -49,7 +49,7 @@ function essone_register ($wp_customize) {
 
 	));
 
-	$wp_customize->add_control( 'topbar2_whatss', array(
+	$wp_customize->add_control( 'whatss_number', array(
         'type'     => 'text',
         'settings'  => 'contact_number_whatss',
         'label'    => __( 'Numero de WhatsApp', 'essystemstart2' ),
@@ -62,9 +62,9 @@ function essone_register ($wp_customize) {
 	$wp_customize->add_setting('contact_text_whatss', array(
 	'default'		=> 'Olá, Tenho uma duvida.',
 
-	));	
+  ));
 
-	$wp_customize->add_control( 'topbar_whatss', array(
+	$wp_customize->add_control( 'whatss_text', array(
         'type'     => 'text',
         'settings'  => 'contact_text_whatss',
         'label'    => __( 'Texto da conversa inicial', 'essystemstart2' ),
@@ -172,6 +172,27 @@ $wp_customize->add_section( 'p-user', array(
           'settings'  => 'bgheader_content',
           'label'    => 'Imagem do Fundo Cabeçalho',
           'section'  => 'bgheader_section',
+          'priority' => 2,		
+      )));
+
+      //Colors
+    $wp_customize->add_section( 'colors_section', array(
+
+      'title'    => __('Cores'),
+      'description' => '',
+      'priority' => 40,
+  )); 
+
+  $wp_customize->add_setting('color_text_header_content', array(
+    'default'		=> '',
+
+    ));	
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+      $wp_customize,'color_text_header', array(
+          'settings'  => 'color_text_header_content',
+          'label'    => 'Cor do texto Cabeçalho',
+          'section'  => 'colors_section',
           'priority' => 2,		
       )));
   

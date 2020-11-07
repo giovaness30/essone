@@ -1,3 +1,11 @@
+<?php
+
+if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
+	$theme_header_bg = get_theme_mod('bgheader_content'); // Assigning it to a variable to keep the markup clean
+}
+  
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,12 +17,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <!-- Font-awesome -->
+    <script src="https://kit.fontawesome.com/1a75781615.js" crossorigin="anonymous"></script>
 </head>
     <body <?php body_class(); ?>>
 
-        <header>
+        <header class="col-12" style="background-image:url('<?php echo $theme_header_bg ?>');">
 
-            <div class="row justify-content-center align-items-center px-5">
+            <div class="row justify-content-center align-items-center mx-5" style="color: #fff">
 
                 <!-- Logo do site -->
                 <div class="col-12 col-md-3 d-flex justify-content-center py-2"> 
@@ -51,23 +61,17 @@
                 <?php
  
                     if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
-                        <div class="col-md-3 col-10">
+                        <div class="col-md-3 col-10 d-flex align-items-center">
                             <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                         </div>
                     
                 <?php endif; ?>
 
-                <!-- <div class="header-widght col-10 col-md-3 py-1 d-flex justify-content-around align-items-center">
-
-					<?php dynamic_sidebar('header-widght'); ?>
-					
-				</div> -->
-
             </div>
 
         </header>
 
-        <div id="menuprincipal" class="col-12 border-top border-bottom justify-content-center py-0">
+        <div id="menuprincipal" class="col-12 border-top border-bottom justify-content-center">
 		
 			<?php wp_nav_menu (array ('theme_location' => 'header-menu')); ?>
 			
