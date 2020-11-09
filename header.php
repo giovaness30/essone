@@ -71,7 +71,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
 
         </header>
 
-        <div id="menuprincipal" class="col-12 border-top border-bottom justify-content-center">
+        <div id="menuprincipal" class="border-top border-bottom justify-content-center">
 		
 			<?php wp_nav_menu (array ('theme_location' => 'header-menu')); ?>
 			
