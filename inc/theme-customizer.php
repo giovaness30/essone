@@ -154,46 +154,64 @@ $wp_customize->add_section( 'p-user', array(
 
   // )));
 
-    //Background Header
-    $wp_customize->add_section( 'bgheader_section', array(
+  //Background Header
+  $wp_customize->add_section( 'bgheader_section', array(
 
-      'title'    => __('Fundos'),
-      'description' => '',
-      'priority' => 40,
+    'title'    => __('Fundos'),
+    'description' => '',
+    'priority' => 40,
   )); 
 
   $wp_customize->add_setting('bgheader_content', array(
     'default'		=> '',
 
-    ));	
+  ));	
 
-    $wp_customize->add_control( new WP_Customize_Image_Control(
-      $wp_customize,'bgheader', array(
-          'settings'  => 'bgheader_content',
-          'label'    => 'Imagem do Fundo Cabeçalho',
-          'section'  => 'bgheader_section',
-          'priority' => 2,		
-      )));
+  $wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize,'bgheader', array(
+        'settings'  => 'bgheader_content',
+        'label'    => 'Imagem do Fundo Cabeçalho',
+        'section'  => 'bgheader_section',
+        'priority' => 2,		
+    )));
 
-      //Colors
-    $wp_customize->add_section( 'colors_section', array(
+  //Colors
+  $wp_customize->add_section( 'colors_section', array(
 
-      'title'    => __('Cores'),
-      'description' => '',
-      'priority' => 40,
+    'title'    => __('Cores e CSS Custom'),
+    'description' => '',
+    'priority' => 40,
   )); 
 
   $wp_customize->add_setting('color_text_header_content', array(
     'default'		=> '',
 
-    ));	
+  ));	
 
-    $wp_customize->add_control( new WP_Customize_Color_Control(
-      $wp_customize,'color_text_header', array(
-          'settings'  => 'color_text_header_content',
-          'label'    => 'Cor do texto Cabeçalho',
-          'section'  => 'colors_section',
-          'priority' => 2,		
-      )));
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_text_header', array(
+        'settings'  => 'color_text_header_content',
+        'label'    => 'Cor do texto Cabeçalho',
+        'section'  => 'colors_section',
+        'priority' => 2,		
+    )
+  ));
+
+  $wp_customize->add_setting('css_header_right_settings', array(
+    'default'		=> '',
+
+  ));	
+  $wp_customize->add_control('css_header_right', array(
+        'type'      => 'textarea',
+        'settings'  => 'css_header_right_settings',
+        'label'    => 'CSS Widget Cabeçalho Direito',
+        'section'  => 'colors_section',
+        'priority' => 2,		
+    )
+  );
+  
+
+
+      
   
 } ?>

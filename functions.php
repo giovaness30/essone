@@ -114,17 +114,7 @@ function footer1_sidebar() {
  }
  add_action( 'widgets_init', 'footer1_sidebar' );
 
- // Adiciona CSS dimanico ao tema
-//  if(!function_exists('style_options')){
-//    function style_options($wp){
-//        header('Content-Type: text/css');
-//        require dirname(__FILE__) . '/style-options.php';
-
-//        exit;
-//    }
-//    add_action('parse_request', 'style_options');
-//  }
-
+// Adiciona CSS dimanico ao tema
 function theme_enqueue_styles() {
   wp_enqueue_style('dynamic-css', admin_url('admin-ajax.php') . '?action=dynamic_css', null, null);
 }

@@ -61,7 +61,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php
  
                     if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
-                        <div class="col-md-3 col-10 d-flex align-items-center">
+                        <div class="widget-right col-md-3 col-10 d-flex align-items-center">
                             <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                         </div>
                     
