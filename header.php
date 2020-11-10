@@ -70,10 +70,15 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
             </div>
 
         </header>
-
+        
         <div id="menuprincipal" class="border-top border-bottom justify-content-center">
 		
-			<?php wp_nav_menu (array ('theme_location' => 'header-menu')); ?>
+             
+            <?php if(is_home() || is_front_page() || is_product()){
+
+                wp_nav_menu (array ('theme_location' => 'header-menu'));
+            } 
+            ?>
             	
 			
         </div>

@@ -3,7 +3,9 @@
                 </div>
             </div>
         </div>
-        <?php include( get_template_directory() . '/footer-widget.php' ); ?>
+        <?php if(is_home() || is_front_page() || is_product()){
+        include( get_template_directory() . '/footer-widget.php' );
+        }?>
 
         <?php
         if( get_theme_mod( 'bgfooter_content' ) != '') { // if there is a background img
