@@ -3,9 +3,16 @@
                 </div>
             </div>
         </div>
-        <?php get_template_part( 'footer-widget.php' ); ?>  
+        <?php include( get_template_directory() . '/footer-widget.php' ); ?>
 
-        <footer class="blog-footer">
+        <?php
+        if( get_theme_mod( 'bgfooter_content' ) != '') { // if there is a background img
+            $theme_footer_bg = get_theme_mod('bgfooter_content'); // Assigning it to a variable to keep the markup clean
+        }
+        
+        ?>
+
+        <footer class="blog-footer" style="background-image:url('<?php echo $theme_footer_bg ?>');">
             
             <p>&copy; <?php	echo get_bloginfo('name') ;?></p>
             <p class="footerdev">Desenvolvido por <a target="blank" href="https://essystem.com.br">ESSystem Sistemas</a></p>

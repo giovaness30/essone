@@ -1,20 +1,20 @@
 <?php
 
-if ( is_active_sidebar( 'footer1_sidebar' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) ) {?>
-        <div id="footer-widget" class="row m-0 <?php if(!is_theme_preset_active()){ echo 'bg-light'; } ?>">
+if ( is_active_sidebar( 'footer1_sidebar' ) || is_active_sidebar( 'footer2_sidebar' ) || is_active_sidebar( 'footer3_sidebar' ) ) {?>
+        <div id="footer-widget" class="row py-4 bg-light border-top">
             <div class="container">
                 <div class="row">
                     <?php if ( is_active_sidebar( 'footer1_sidebar' )) : ?>
                         <div class="col-12 col-md-4"><?php dynamic_sidebar( 'footer1_sidebar' ); ?></div>
                     <?php endif; ?>
-                    <?php if ( is_active_sidebar( 'footer-2' )) : ?>
-                        <div class="col-12 col-md-4"><?php dynamic_sidebar( 'footer-2' ); ?></div>
+                    <?php if ( is_active_sidebar( 'footer2_sidebar' )) : ?>
+                        <div class="col-12 col-md-4"><?php dynamic_sidebar( 'footer2_sidebar' ); ?></div>
                     <?php endif; ?>
-                    <?php if ( is_active_sidebar( 'footer-3' )) : ?>
-                        <div class="col-12 col-md-4"><?php dynamic_sidebar( 'footer-3' ); ?></div>
+                    <?php if ( is_active_sidebar( 'footer3_sidebar' )) : ?>
+                        <div class="col-12 col-md-4"><?php dynamic_sidebar( 'footer3_sidebar' ); ?></div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
 
-<?php }
+<?php }?>

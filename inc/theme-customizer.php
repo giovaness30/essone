@@ -155,7 +155,7 @@ $wp_customize->add_section( 'p-user', array(
   // )));
 
   //Background Header
-  $wp_customize->add_section( 'bgheader_section', array(
+  $wp_customize->add_section( 'bg_section', array(
 
     'title'    => __('Fundos'),
     'description' => '',
@@ -171,7 +171,21 @@ $wp_customize->add_section( 'p-user', array(
     $wp_customize,'bgheader', array(
         'settings'  => 'bgheader_content',
         'label'    => 'Imagem do Fundo Cabeçalho',
-        'section'  => 'bgheader_section',
+        'section'  => 'bg_section',
+        'priority' => 2,		
+    )));
+
+  //Background footer
+  $wp_customize->add_setting('bgfooter_content', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Image_Control(
+    $wp_customize,'bgfooter', array(
+        'settings'  => 'bgfooter_content',
+        'label'    => 'Imagem do Fundo Rodapé',
+        'section'  => 'bg_section',
         'priority' => 2,		
     )));
 

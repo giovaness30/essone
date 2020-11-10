@@ -98,21 +98,69 @@ function right_header_sidebar() {
  }
  add_action( 'widgets_init', 'right_header_sidebar' );
 
+//widget Slide Home Page
+function slide_sidebar() {
+  register_sidebar(
+   array (
+      'name' => __( 'Slide Home', 'essone'),
+      'id' => 'slide_sidebar',
+      'description' => __( 'Altere o Modelo de pagina da home para "Slider Home" e adiciona o Shortcode aqui!', 'essone' ),
+      'before_widget' => '<div class="widget-content" style="margin:0">',
+      'after_widget' => "</div>",
+      'before_title' => '<h3 class="widget-title">',
+      'after_title' => '</h3>',
+  )
+);
+}
+add_action( 'widgets_init', 'slide_sidebar' );
+
 //widget footer 1
 function footer1_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Rodape 1', 'essone'),
+       'name' => __( 'Rodape 1 Esquerdo', 'essone'),
        'id' => 'footer1_sidebar',
        'description' => __( 'Footer 1 essone theme', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
-       'before_title' => '<h3 class="widget-title">',
-       'after_title' => '</h3>',
+       'before_title' => '<h4 class="widget-title">',
+       'after_title' => '</h4>',
    )
   );
  }
- add_action( 'widgets_init', 'footer1_sidebar' );
+add_action( 'widgets_init', 'footer1_sidebar' );
+
+//widget footer 2
+function footer2_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Rodape 2 Centro', 'essone'),
+       'id' => 'footer2_sidebar',
+       'description' => __( 'Footer 2 essone theme', 'essone' ),
+       'before_widget' => '<div class="widget-content">',
+       'after_widget' => "</div>",
+       'before_title' => '<h4 class="widget-title">',
+       'after_title' => '</h4>',
+   )
+  );
+ }
+add_action( 'widgets_init', 'footer2_sidebar' );
+
+//widget footer 3
+function footer3_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Rodape 3 Direito', 'essone'),
+       'id' => 'footer3_sidebar',
+       'description' => __( 'Footer 3 essone theme', 'essone' ),
+       'before_widget' => '<div class="widget-content">',
+       'after_widget' => "</div>",
+       'before_title' => '<h4 class="widget-title">',
+       'after_title' => '</h4>',
+   )
+  );
+ }
+add_action( 'widgets_init', 'footer3_sidebar' );
 
 // Adiciona CSS dimanico ao tema
 function theme_enqueue_styles() {

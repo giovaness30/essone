@@ -74,9 +74,10 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
         <div id="menuprincipal" class="border-top border-bottom justify-content-center">
 		
 			<?php wp_nav_menu (array ('theme_location' => 'header-menu')); ?>
+            	
 			
         </div>
-        <div class="album py-3">
+        <div class="album pb-3">
             <div class="container">
                 <div class="row">
                     <div class=" col-12">
