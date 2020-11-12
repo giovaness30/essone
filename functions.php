@@ -24,7 +24,7 @@ include( get_template_directory() . '/inc/theme-customizer.php' );
 add_action('customize_register', 'essone_register');
 
 //Adiciona custom arquivos
-require_once get_template_directory() . '/inc/cart.php';
+include( get_template_directory() . '/inc/cart.php' ) ;
 require_once get_template_directory() . '/inc/custom-ess.php';
 
 //Suporte para tema personalizado
