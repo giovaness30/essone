@@ -98,6 +98,22 @@ function right_header_sidebar() {
  }
  add_action( 'widgets_init', 'right_header_sidebar' );
 
+//widget Primeiro Widget do corpo so site
+function firt_body_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Primeiro Espaço do corpo do site', 'essone'),
+       'id' => 'firt_body_sidebar',
+       'description' => __( 'Espaço Geralmente Utilizado para Menus', 'essone' ),
+       'before_widget' => '<div class="widget-content" style="">',
+       'after_widget' => "</div>",
+       'before_title' => '<h3 class="widget-title">',
+       'after_title' => '</h3>',
+   )
+  );
+ }
+add_action( 'widgets_init', 'firt_body_sidebar' );
+
 //widget Slide Home Page
 function slide_sidebar() {
   register_sidebar(

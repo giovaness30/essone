@@ -73,15 +73,14 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
         
         <div id="menuprincipal" class="border-top border-bottom justify-content-center">
 		
-             
-            <?php if(is_home() || is_front_page() || is_product()){
+            <?php if(is_home() || is_front_page() || is_product() && is_active_sidebar( 'firt_body_sidebar' )){
 
-                wp_nav_menu (array ('theme_location' => 'header-menu'));
+                dynamic_sidebar( 'firt_body_sidebar' );
             } 
             ?>
             	
-			
         </div>
+
         <div class="album pb-3">
             <div class="container">
                 <div class="row">
