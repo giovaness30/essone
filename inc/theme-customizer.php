@@ -2,7 +2,7 @@
 
 function essone_register ($wp_customize) {
 
-//PERSONALIZAR TEMA
+// ## ITEM MENU ##  Contatos
 	$wp_customize->add_section( 'top_section', array(
 
         'title'    => __('Contatos', 'essystemstart2'),
@@ -154,7 +154,7 @@ $wp_customize->add_section( 'p-user', array(
 
   // )));
 
-  //Background Header
+  // ## ITEM MENU ## Background Header
   $wp_customize->add_section( 'bg_section', array(
 
     'title'    => __('Fundos'),
@@ -162,6 +162,7 @@ $wp_customize->add_section( 'p-user', array(
     'priority' => 40,
   )); 
 
+  // Background Image Header
   $wp_customize->add_setting('bgheader_content', array(
     'default'		=> '',
 
@@ -174,6 +175,49 @@ $wp_customize->add_section( 'p-user', array(
         'section'  => 'bg_section',
         'priority' => 2,		
     )));
+
+  //Background color Header
+  $wp_customize->add_setting('color_headerbg_content', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_headerbg', array(
+        'settings'  => 'color_headerbg_content',
+        'label'    => 'Cor do Fundo Cabeçalho',
+        'section'  => 'bg_section',
+        'priority' => 2,		
+    )));
+
+  //Background color Body
+  $wp_customize->add_setting('color_bodybg_content', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_bodybg', array(
+        'settings'  => 'color_bodybg_content',
+        'label'    => 'Cor do corpo do site',
+        'section'  => 'bg_section',
+        'priority' => 2,		
+    )));
+
+  //Background color widget
+  $wp_customize->add_setting('color_widgetsbg_content', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_widgetsbg', array(
+        'settings'  => 'color_widgetsbg_content',
+        'label'    => 'Cor do Fundo Area Widgets',
+        'section'  => 'bg_section',
+        'priority' => 2,		
+    )));
+
 
   //Background footer
   $wp_customize->add_setting('bgfooter_content', array(
@@ -189,7 +233,9 @@ $wp_customize->add_section( 'p-user', array(
         'priority' => 2,		
     )));
 
-  //Colors
+
+
+  // ## ITEM MENU ## Colors
   $wp_customize->add_section( 'colors_section', array(
 
     'title'    => __('Cores e CSS Custom'),
@@ -211,6 +257,7 @@ $wp_customize->add_section( 'p-user', array(
     )
   ));
 
+  //CSS Header
   $wp_customize->add_setting('css_header_right_settings', array(
     'default'		=> '',
 

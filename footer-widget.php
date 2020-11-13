@@ -1,7 +1,7 @@
 <?php
 
 if ( is_active_sidebar( 'footer1_sidebar' ) || is_active_sidebar( 'footer2_sidebar' ) || is_active_sidebar( 'footer3_sidebar' ) ) {?>
-        <div id="footer-widget" class="row py-4 bg-light border-top">
+        <div id="footer-widget" class="row py-4 border-top">
             <div class="container">
                 <div class="row">
                     <?php if ( is_active_sidebar( 'footer1_sidebar' )) : ?>

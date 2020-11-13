@@ -22,7 +22,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
 </head>
     <body <?php body_class(); ?>>
 
-        <header class="col-12" style="background-image:url('<?php echo $theme_header_bg ?>');">
+        <header class="header-class col-12" style="background-image:url('<?php echo $theme_header_bg ?>');">
 
             <div class="row justify-content-center align-items-center mx-5" style="color: #fff">
 
@@ -71,7 +71,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
 
         </header>
         
-        <div id="menuprincipal" class="border-top border-bottom justify-content-center">
+        <div id="menuprincipal" class="justify-content-center">
 		
             <?php if(is_home() || is_front_page() || is_product() && is_active_sidebar( 'firt_body_sidebar' )){
 
@@ -81,7 +81,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
             	
         </div>
 
-        <div class="album pb-3">
+        <div class="body album pb-3">
             <div class="container">
                 <div class="row">
                     <div class=" col-12">
