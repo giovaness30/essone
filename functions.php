@@ -88,11 +88,11 @@ function right_header_sidebar() {
    array (
        'name' => __( 'Espaço Direito do Cabeçalho "header"', 'essone'),
        'id' => 'right_header_sidebar',
-       'description' => __( 'Right Header essone theme shotcodes = [cartEss][user-icon][whats-icon]', 'essone' ),
-       'before_widget' => '<div class="widget-content" style="padding-left:2em;">',
-       'after_widget' => "</div>",
-       'before_title' => '<h3 class="widget-title">',
-       'after_title' => '</h3>',
+       'description' => __( 'Right Header essone theme shotcodes = [cart-ess][user-icon][whats-icon]', 'essone' ),
+       'before_widget' => '<div class="py-3 pl-2">',
+       'after_widget' => '</div>',
+       'before_title' => '<span class="hidden">',
+       'after_title' => '</span>',
    )
   );
  }

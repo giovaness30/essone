@@ -24,10 +24,10 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
 
         <header class="header-class col-12" style="background-image:url('<?php echo $theme_header_bg ?>');">
 
-            <div class="row justify-content-center align-items-center mx-5" style="color: #fff">
+            <div class="row justify-content-center align-items-center mx-lg-3" style="color: #fff">
 
                 <!-- Logo do site -->
-                <div class="col-12 col-md-3 d-flex justify-content-center py-2"> 
+                <div class="col-12 col-lg-3 d-flex justify-content-center py-2"> 
 
                     <a class="text-muted" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 
@@ -51,7 +51,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php
  
                     if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
-                        <div class="col-md-6 col-12">
+                        <div class="col-lg-4 col-12 py-2">
                             <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
                         </div>
                     
@@ -61,7 +61,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php
  
                     if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
-                        <div class="widget-right col-md-3 col-10 d-flex align-items-center">
+                        <div class="widget-right content col-md-8 col-lg-3 col-10 py-2 d-flex align-items-center justify-content-center">
                             <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                         </div>
                     
@@ -84,4 +84,4 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
         <div class="body album pb-3">
             <div class="container">
                 <div class="row">
-                    <div class=" col-12">
+                    <div class="col-12">

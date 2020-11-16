@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.4.7
+Version: 1.4.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -32,6 +32,9 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
     font-size: 3.5rem;
     }
 }
+
+/*Esconde titulo dos Widget's*/
+.hidden{display:none;}
 
 /*### END ###*/
 
@@ -109,7 +112,8 @@ margin-bottom: 0;
 /*### END ###*/
 
 /*### MEDIA (ALTERAÇÔES PARA LAYOUTs MOBILE) ###*/
-
+@media screen and (max-width: 700px){
+}
 
 /*### END ###*/
 

@@ -1,12 +1,12 @@
 <?php
 
-// # [cartEss]
+// # [cart-ess]
 function functionShortcode()
 {
     $textContent = '<div id="site-header-cart" class="header-cart-container">' . newstore_woocommerce_header_cart() . '</div>';
     return $textContent;
 }
-add_shortcode('cartEss', 'functionShortcode'); 
+add_shortcode('cart-ess', 'functionShortcode'); 
 
 // # [user-icon]
 function shortcodeUserIcon()
