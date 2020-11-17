@@ -178,6 +178,37 @@ function footer3_sidebar() {
  }
 add_action( 'widgets_init', 'footer3_sidebar' );
 
+//widget shop-mobile
+function shop_mobile_lf_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Div Flutuante Rodape Esquerdo', 'essone'),
+       'id' => 'shop_mobile_lf_sidebar',
+       'description' => __( 'Barra Rodapé Flutuante Esquerdo essone theme', 'essone' ),
+       'before_widget' => '<div class="">',
+       'after_widget' => "</div>",
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+add_action( 'widgets_init', 'shop_mobile_lf_sidebar' );
+
+function shop_mobile_rg_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Div Flutuante Rodape Direito', 'essone'),
+       'id' => 'shop_mobile_rg_sidebar',
+       'description' => __( 'Barra Rodapé Flutuante Direito essone theme', 'essone' ),
+       'before_widget' => '<div class="">',
+       'after_widget' => "</div>",
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+add_action( 'widgets_init', 'shop_mobile_rg_sidebar' );
+
 // Adiciona CSS dimanico ao tema
 function theme_enqueue_styles() {
   wp_enqueue_style('dynamic-css', admin_url('admin-ajax.php') . '?action=dynamic_css', null, null);
