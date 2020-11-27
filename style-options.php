@@ -17,3 +17,10 @@
 #footer-widget{
     background-color: <?php echo get_theme_mod('color_widgetsbg_content'); ?>;
 }
+.woocommerce button.button.alt{
+    background-color: <?php echo get_theme_mod('color_primary'); ?>;
+}
+.woocommerce button.button.alt:hover{
+    background-color: <?php echo get_theme_mod('color_primary_hover'); ?>;
+}
+

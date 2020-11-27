@@ -256,6 +256,34 @@ $wp_customize->add_section( 'p-user', array(
         'priority' => 2,		
     )
   ));
+  //Cor Primaria
+  $wp_customize->add_setting('color_primary', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_primary', array(
+        'settings'  => 'color_primary',
+        'label'    => 'Cor Primaria',
+        'section'  => 'colors_section',
+        'priority' => 2,		
+    )
+  ));
+  //Cor Primaria Hover
+  $wp_customize->add_setting('color_primary_hover', array(
+    'default'		=> '',
+
+  ));	
+
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,'color_primary_hover', array(
+        'settings'  => 'color_primary_hover',
+        'label'    => 'Cor Primaria Hover',
+        'section'  => 'colors_section',
+        'priority' => 2,		
+    )
+  ));
 
   //CSS Header
   $wp_customize->add_setting('css_header_right_settings', array(
