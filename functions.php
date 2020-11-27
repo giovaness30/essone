@@ -257,7 +257,7 @@ add_filter('woocommerce_form_field_args',  'wc_form_field_args',10,3);
 }
 
 // Adicionar Nome e Sobrenome ao Cadastro pelo ENTRAR
-// 1. ADD FIELDS
+// 1. Adiciona campos
 add_action( 'woocommerce_register_form_start', 'bbloomer_add_name_woo_account_registration' );
  
 function bbloomer_add_name_woo_account_registration() {
@@ -277,8 +277,7 @@ function bbloomer_add_name_woo_account_registration() {
  
     <?php
 }
-
-// 2. VALIDATE FIELDS
+// 2. Valida campos
 add_filter( 'woocommerce_registration_errors', 'bbloomer_validate_name_fields', 10, 3 );
  
 function bbloomer_validate_name_fields( $errors, $username, $email ) {
@@ -290,8 +289,7 @@ function bbloomer_validate_name_fields( $errors, $username, $email ) {
     }
     return $errors;
 }
-
-// 3. SAVE FIELDS
+// 3. Salva campos
 add_action( 'woocommerce_created_customer', 'bbloomer_save_name_fields' );
  
 function bbloomer_save_name_fields( $customer_id ) {
@@ -304,4 +302,64 @@ function bbloomer_save_name_fields( $customer_id ) {
         update_user_meta( $customer_id, 'last_name', sanitize_text_field($_POST['billing_last_name']) );
     }
  
+}
+
+// Remove País dos campos de Checkout
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+unset($fields['billing']['billing_country']); //remover país
+return $fields;
+}
+
+//Alterações no campos do Checkout, edições feitas junto com algumas em /inc/js/custom.js
+add_filter("woocommerce_checkout_fields", "order_fields");
+function order_fields($fields) {
+
+    $order = array(
+        "billing_persontype",
+        "billing_first_name", 
+        "billing_last_name", 
+        "billing_company", 
+        "billing_cnpj",
+        "billing_cpf",
+        "billing_email",
+        "billing_postcode",
+        "billing_address_1", 
+        "billing_neighborhood", 
+        "billing_city",
+        "billing_state",
+        "billing_phone"
+
+    );
+    foreach($order as $field)
+    {
+        $ordered_fields[$field] = $fields["billing"][$field];
+    }
+
+    $fields["billing"] = $ordered_fields;
+
+    $fields['billing']['billing_persontype']['priority'] = 10;
+    $fields['billing']['billing_company']['priority'] = 20;
+    $fields['billing']['billing_cpf']['priority'] = 30;
+    $fields['billing']['billing_cnpj']['priority'] = 40;
+    $fields['billing']['billing_first_name']['priority'] = 50;
+    $fields['billing']['billing_last_name']['priority'] = 60;
+    $fields['billing']['billing_email']['priority'] = 70;
+    $fields['billing']['billing_postcode']['priority'] = 80;
+    $fields['billing']['billing_address_1']['priority'] = 90;
+    $fields['billing']['billing_neighborhood']['priority'] = 100;
+    $fields['billing']['billing_city']['priority'] = 110;
+    $fields['billing']['billing_state']['priority'] = 120;
+    $fields['billing']['billing_phone']['priority'] = 130;
+  
+    $fields['billing']['billing_company']['class'] = array('col-12 col-md-6 float-left');
+    $fields['billing']['billing_cnpj']['class'] = array( 'form-row-last' );
+    $fields['billing']['billing_email']['class'] = array('form-row-first col-12 col-md-6');
+    $fields['billing']['billing_postcode']['class'] = array('form-row-last col-12 col-md-6');
+    $fields['billing']['billing_address_1']['class'] = array('form-row-last col-12 col-md-6');
+    $fields['billing']['billing_city']['class'] = array('form-row-last col-12 col-md-6');
+    $fields['billing']['billing_state']['class'] = array('form-row-first col-12 col-md-6');
+    $fields['billing']['billing_phone']['class'] = array('form-row-first col-12 col-md-6');
+    
+    return $fields;
 }
