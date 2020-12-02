@@ -98,6 +98,22 @@ function right_header_sidebar() {
  }
  add_action( 'widgets_init', 'right_header_sidebar' );
 
+//widget central Cabeçalho do site
+function header_center_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Cabeçalho central do site', 'essone'),
+       'id' => 'header_center_sidebar',
+       'description' => __( 'Espaço Geralmente Utilizado para Cetegorias e Pesquisas', 'essone' ),
+       'before_widget' => '<div class="widget-content headercenter" style="">',
+       'after_widget' => "</div>",
+       'before_title' => '<h3 class="widget-title">',
+       'after_title' => '</h3>',
+   )
+  );
+ }
+add_action( 'widgets_init', 'header_center_sidebar' );
+
 //widget Primeiro Widget do corpo so site
 function firt_body_sidebar() {
   register_sidebar(
@@ -311,55 +327,62 @@ unset($fields['billing']['billing_country']); //remover país
 return $fields;
 }
 
-//Alterações no campos do Checkout, edições feitas junto com algumas em /inc/js/custom.js
-add_filter("woocommerce_checkout_fields", "order_fields");
-function order_fields($fields) {
 
-    $order = array(
-        "billing_persontype",
-        "billing_first_name", 
-        "billing_last_name", 
-        "billing_company", 
-        "billing_cnpj",
-        "billing_cpf",
-        "billing_email",
-        "billing_postcode",
-        "billing_address_1", 
-        "billing_neighborhood", 
-        "billing_city",
-        "billing_state",
-        "billing_phone"
+/*Checa se o plugin Brazilian Market do Caludio esta ativado.*/
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-    );
-    foreach($order as $field)
-    {
-        $ordered_fields[$field] = $fields["billing"][$field];
-    }
+if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce-extra-checkout-fields-for-brazil.php' ) ) {
+   
+    //Alterações no campos do Checkout, edições feitas junto com algumas em /inc/js/custom.js
+  add_filter("woocommerce_checkout_fields", "order_fields");
+  function order_fields($fields) {
 
-    $fields["billing"] = $ordered_fields;
+      $order = array(
+          "billing_persontype",
+          "billing_first_name", 
+          "billing_last_name", 
+          "billing_company", 
+          "billing_cnpj",
+          "billing_cpf",
+          "billing_email",
+          "billing_postcode",
+          "billing_address_1", 
+          "billing_neighborhood", 
+          "billing_city",
+          "billing_state",
+          "billing_phone"
 
-    $fields['billing']['billing_persontype']['priority'] = 10;
-    $fields['billing']['billing_company']['priority'] = 20;
-    $fields['billing']['billing_cpf']['priority'] = 30;
-    $fields['billing']['billing_cnpj']['priority'] = 40;
-    $fields['billing']['billing_first_name']['priority'] = 50;
-    $fields['billing']['billing_last_name']['priority'] = 60;
-    $fields['billing']['billing_email']['priority'] = 70;
-    $fields['billing']['billing_postcode']['priority'] = 80;
-    $fields['billing']['billing_address_1']['priority'] = 90;
-    $fields['billing']['billing_neighborhood']['priority'] = 100;
-    $fields['billing']['billing_city']['priority'] = 110;
-    $fields['billing']['billing_state']['priority'] = 120;
-    $fields['billing']['billing_phone']['priority'] = 130;
-  
-    $fields['billing']['billing_company']['class'] = array('col-12 col-md-6 float-left');
-    $fields['billing']['billing_cnpj']['class'] = array( 'form-row-last' );
-    $fields['billing']['billing_email']['class'] = array('form-row-first col-12 col-md-6');
-    $fields['billing']['billing_postcode']['class'] = array('form-row-last col-12 col-md-6');
-    $fields['billing']['billing_address_1']['class'] = array('form-row-last col-12 col-md-6');
-    $fields['billing']['billing_city']['class'] = array('form-row-last col-12 col-md-6');
-    $fields['billing']['billing_state']['class'] = array('form-row-first col-12 col-md-6');
-    $fields['billing']['billing_phone']['class'] = array('form-row-first col-12 col-md-6');
+      );
+      foreach($order as $field)
+      {
+          $ordered_fields[$field] = $fields["billing"][$field];
+      }
+
+      $fields["billing"] = $ordered_fields;
+
+      $fields['billing']['billing_persontype']['priority'] = 10;
+      $fields['billing']['billing_company']['priority'] = 20;
+      $fields['billing']['billing_cpf']['priority'] = 30;
+      $fields['billing']['billing_cnpj']['priority'] = 40;
+      $fields['billing']['billing_first_name']['priority'] = 50;
+      $fields['billing']['billing_last_name']['priority'] = 60;
+      $fields['billing']['billing_email']['priority'] = 70;
+      $fields['billing']['billing_postcode']['priority'] = 80;
+      $fields['billing']['billing_address_1']['priority'] = 90;
+      $fields['billing']['billing_neighborhood']['priority'] = 100;
+      $fields['billing']['billing_city']['priority'] = 110;
+      $fields['billing']['billing_state']['priority'] = 120;
+      $fields['billing']['billing_phone']['priority'] = 130;
     
-    return $fields;
-}
+      $fields['billing']['billing_company']['class'] = array('col-12 col-md-6 float-left');
+      $fields['billing']['billing_cnpj']['class'] = array( 'form-row-last' );
+      $fields['billing']['billing_email']['class'] = array('form-row-first col-12 col-md-6');
+      $fields['billing']['billing_postcode']['class'] = array('form-row-last col-12 col-md-6');
+      $fields['billing']['billing_address_1']['class'] = array('form-row-last col-12 col-md-6');
+      $fields['billing']['billing_city']['class'] = array('form-row-last col-12 col-md-6');
+      $fields['billing']['billing_state']['class'] = array('form-row-first col-12 col-md-6');
+      $fields['billing']['billing_phone']['class'] = array('form-row-first col-12 col-md-6');
+      
+      return $fields;
+  }
+} 
