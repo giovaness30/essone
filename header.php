@@ -68,7 +68,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php endif; ?>
 
                 <!-- widget central header -->
-                <div class="justify-content-center">
+                <div class="justify-content-center container">
 		
                     <?php if(is_active_sidebar( 'header_center_sidebar' )){
 

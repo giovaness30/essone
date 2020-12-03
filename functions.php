@@ -32,7 +32,7 @@ function essone_theme_support(){
 
     add_theme_support('custom-logo');
     add_theme_support( 'post_thumbnails' );
-    set_post_thumbnail_size( 200 , 150, true);
+    // set_post_thumbnail_size( 200 , 150, true);
   }
   add_action('after_setup_theme', 'essone_theme_support');
 
@@ -54,6 +54,7 @@ add_action( 'after_setup_theme', 'essone_add_woocommerce_support' );
 add_theme_support ('wc-product-gallery-zoom');
 add_theme_support ('wc-product-gallery-lightbox');
 add_theme_support ('wc-product-gallery-slider');
+
 
 //Adicionar Estrelas de avaliação nos produtos home
 function essone_woocommerce_product_get_rating_html($html, $rating, $count){

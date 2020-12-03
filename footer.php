@@ -19,7 +19,7 @@
             <p>&copy; <?php	echo get_bloginfo('name') ;?></p>
             <p class="footerdev">Desenvolvido por <a target="blank" href="https://essystem.com.br">ESSystem Sistemas</a></p>
             
-            <a href="#"><img src="https://img.icons8.com/metro/26/000000/collapse-arrow.png"/></a>
+            <a href="#"><img style="width:26px;" src="https://img.icons8.com/metro/26/000000/collapse-arrow.png"/></a>
             
         </footer>
 
