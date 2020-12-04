@@ -298,6 +298,30 @@ $wp_customize->add_section( 'p-user', array(
         'priority' => 2,		
     )
   );
+
+   // ## CUSTOM WOOCOMMERCE ## 
+   $wp_customize->add_section( 'customwoo_section', array(
+
+    'title'    => __('Custom Woocommerce'),
+    'description' => '',
+    'priority' => 40,
+  )); 
+
+  $wp_customize->add_setting('img_size_single', array(
+    'default'		=> '',
+    
+
+  ));	
+
+  $wp_customize->add_control('img_size_single', array(
+    'type'      => 'textarea',
+    'settings'  => 'img_size_single',
+    'label'    => 'CSS IMG Single Page Products',
+    'section'  => 'customwoo_section',
+    'priority' => 2,
+    'description' => 'Fotos tiradas de Celular ou Tablet = Width:75%',
+)
+);
   
 
 
