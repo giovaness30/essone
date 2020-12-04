@@ -50,7 +50,7 @@ $wrapper_classes   = apply_filters(
 
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
 	<!-- Product Carousel -->
-	<div id="product-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+	<div id="product-carousel" class="carousel slide carousel-fade container" data-ride="carousel">
 		<div class="carousel-inner" role="listbox">
 			<?php
 			    foreach( $image_links as $image_link_url ) { ?>

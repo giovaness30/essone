@@ -56,6 +56,12 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
     padding-bottom: 1em;
 }
 
+/*----------- BODY
+----------------------------------------*/
+#primary{
+    margin-top: 3rem;
+}
+
 
 /*----------- WOOCOMMERCE
 ----------------------------------------*/
@@ -114,6 +120,15 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
 .product-view-type-item{
     display: none;
 }
+
+/* Alinhamento Foto pagina do produto */
+@media (min-width: 768px) {
+    #product-carousel{
+        width: 75%;
+
+    }
+}
+
 
 /*----------- FOOTER
 ----------------------------------------*/
