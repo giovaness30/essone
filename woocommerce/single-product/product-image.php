@@ -36,38 +36,20 @@ $wrapper_classes   = apply_filters(
 	)
 );
 ?>
-<?php
-    global $product;
-
-    $attachment_ids = $product->get_gallery_image_ids();
-    $image_links[] = get_the_post_thumbnail_url();
-    $product_inc = 1;
-
-    foreach( $attachment_ids as $attachment_id ) {
-        $image_links[] = wp_get_attachment_url( $attachment_id );
-    }
-?>
-
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
-	<!-- Product Carousel -->
-	<div id="product-carousel" class="carousel slide carousel-fade container" data-ride="carousel">
-		<div class="carousel-inner" role="listbox">
-			<?php
-			    foreach( $image_links as $image_link_url ) { ?>
-			    	<div style="width:100%; height:30rem" class="carousel-item <?php echo ($product_inc==1)?'active':''; ?>">
-			        	<?php echo '<img style="width:100%; height:100%" class="prod-car-img img-thumbnail" src="'.$image_link_url.'" alt="Responsive image" />' ; ?>
-			        </div>
-			        <?php $product_inc++;
-			    }
-			?>
-		</div>	
-		<a class="carousel-control-prev" href="#product-carousel" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" style="background-color:#000;" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next text-dark" href="#product-carousel" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" style="background-color:#000;" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>						
-	</div><!-- #Product Carousel -->
+	<figure class="woocommerce-product-gallery__wrapper" >
+		<?php
+		if ( $product->get_image_id() ) {
+			$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+		} else {
+			$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+			$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+			$html .= '</div>';
+		}
+
+		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+		do_action( 'woocommerce_product_thumbnails' );
+		?>
+	</figure>
 </div>

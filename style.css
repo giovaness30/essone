@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.5.5
+Version: 1.5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -13,10 +13,14 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
 
 /*----------- Starter
 ----------------------------------------*/
-/* img{
-  width: 100%;
-  height: 100%;
-} */
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
 
 
 /*----------- HEADER 
@@ -121,8 +125,17 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
     display: none;
 }
 
+/* Alinha imagem single-page woocommerce */
+.woocommerce-product-gallery__image a img {
+    max-height: 100%;
+    min-height: 100%;
+    max-width: 100%;
+}
 
-
+/* Retira Seleção de país no checkout */
+#billing_country{
+    display: none;
+}
 
 /*----------- FOOTER
 ----------------------------------------*/
@@ -133,6 +146,7 @@ Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
   text-align: center;
   background-color: #f4f4f4d4;
   border-top: .05rem solid #e5e5e5;
+  margin-top: auto;
 }
 
 .blog-footer p:last-child {
@@ -146,6 +160,23 @@ margin-bottom: 0;
 @media (min-width: 992px) {
     .shop-mobile{
         display: none;
+    }
+    /* margin imagem pagina do produto */
+    .woocommerce div.product div.images.woocommerce-product-gallery{
+        margin-left: 10rem;
+    }
+    .woocommerce span.onsale {
+        left: 13em;
+    }
+ }
+
+/* Celular */
+@media (max-width: 992px) {
+
+    /* margin imagem pagina do produto */
+    .woocommerce div.product div.images.woocommerce-product-gallery{
+        margin-left: 1rem;
+
     }
  }
 

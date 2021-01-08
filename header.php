@@ -95,6 +95,6 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
         </div>
 
         <div class="body album pb-3">
-            <div class="container">
+            <div class="container geral">
                 <div class="row">
                     <div class="col-12">

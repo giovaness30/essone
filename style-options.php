@@ -30,12 +30,13 @@
     background-color: <?php echo get_theme_mod('color_primary_hover'); ?>;
 }
 
-/* Alinhamento Foto pagina do produto */
-@media (min-width: 768px) {
-    #product-carousel{
-        <?php echo get_theme_mod('img_size_single'); ?>;
-
-    }
+<!-- /* Alinhamento Foto pagina do produto */ -->
+.woocommerce-product-gallery__image {
+    height: <?php if( get_theme_mod( 'alt_img_single' ) != ''){echo get_theme_mod('alt_img_single'); }else{echo '30rem';}?>;
+    border-radius: 10px 10px 0 0;
+}
+.woocommerce div.product div.images.woocommerce-product-gallery{
+    width: <?php if( get_theme_mod( 'larg_img_single' ) != ''){echo get_theme_mod('alt_img_single'); }else{echo '23rem';}?>;
 }
 
 <!-- /*----------- FOOTER

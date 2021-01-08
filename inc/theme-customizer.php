@@ -307,23 +307,31 @@ $wp_customize->add_section( 'p-user', array(
     'priority' => 40,
   )); 
 
-  $wp_customize->add_setting('img_size_single', array(
-    'default'		=> '',
-    
+	// Altura da imagem pagina do produto
+	$wp_customize->add_setting( 'alt_img_single');
 
-  ));	
-
-  $wp_customize->add_control('img_size_single', array(
-    'type'      => 'textarea',
-    'settings'  => 'img_size_single',
-    'label'    => 'CSS IMG Single Page Products',
+  $wp_customize->add_control('alt_img_single', array(
+    'type'      => 'text',
+    'settings'  => 'alt_img_single',
+    'label'    => 'Altura da imagem pagina do produto "height"',
     'section'  => 'customwoo_section',
     'priority' => 2,
-    'description' => 'Fotos tiradas de Celular ou Tablet = Width:75%',
-)
-);
-  
+    'description' => 'Quando sem conteudo = 30rem',
+  )
+  );
 
+  // largura da imagem pagina do produto
+	$wp_customize->add_setting( 'larg_img_single');
+
+  $wp_customize->add_control('larg_img_single', array(
+    'type'      => 'text',
+    'settings'  => 'larg_img_single',
+    'label'    => 'Largura da imagem pagina do produto "width"',
+    'section'  => 'customwoo_section',
+    'priority' => 2,
+    'description' => 'Quando sem conteudo = 23rem',
+  )
+  );
 
       
   

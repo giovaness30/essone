@@ -15,7 +15,7 @@ function shortcodeUserIcon()
 
     
     if ( is_user_logged_in() ) { /*Usuario Logado*/
-        $link_conta = esc_url( home_url( '/minha-conta/' ) );
+        $link_conta = esc_url( home_url( '/minha-conta/orders' ) );
         $current_user = wp_get_current_user();
         echo '<a href="'.$link_conta.'"><i style=""  class="fa fa-user-circle" aria-hidden="true"></i>&nbsp'. $current_user->user_firstname .'</a>';
         }
