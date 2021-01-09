@@ -1,7 +1,7 @@
 //Pega Caminhos que esta no navegador
 var urlSite = window.location.pathname;
 
-//Filtra se vai executar ou nao os comandos
+/* PAGINA FINALIZA COMPRA */
 if(urlSite.indexOf('finalizar-compra') != -1){
 
     // Informações adicional
@@ -16,4 +16,14 @@ if(urlSite.indexOf('finalizar-compra') != -1){
 
     var h3Title = document.querySelector('.woocommerce-billing-fields h3');
     h3Title.style.display = "none";
+    
+}
+
+/* PAGINA CARRINHO */
+if(urlSite.indexOf('carrinho') != -1){
+
+
+//Tamanho campo Estado, onde calcula frete Pagina Carrinho.
+document.querySelector('#calc_shipping_state_field span').style.width = "100%"
+
 }
