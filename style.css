@@ -49,6 +49,10 @@ body{
 /* Esconde titulo dos Widget's */
 .hidden{display:none;}
 
+.head-widget-center{
+    display: flex;
+    color: #000;
+}
 
 /*----------- HOME
 ----------------------------------------*/

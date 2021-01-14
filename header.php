@@ -51,7 +51,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php
  
                     if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
-                        <div class="col-lg-4 col-12 py-2">
+                        <div class="head-widget-one col-lg-4 col-12 py-2">
                             <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
                         </div>
                     
@@ -61,17 +61,15 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
                 <?php
  
                     if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
-                        <div class="widget-right content col-md-8 col-lg-3 col-10 py-2 d-flex align-items-center justify-content-center">
+                        <div class="head-widget-two content col-md-8 col-lg-3 col-10 py-2 d-flex align-items-center justify-content-center">
                             <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                         </div>
                     
                 <?php endif; ?>
 
                 <!-- widget central header -->
-                <div class="justify-content-center container">
-		
+                <div class="head-widget-center justify-content-center container">
                     <?php if(is_active_sidebar( 'header_center_sidebar' )){
-
                         dynamic_sidebar( 'header_center_sidebar' );
                     } 
                     ?>
