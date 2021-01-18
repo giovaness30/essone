@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.5.7
+Version: 1.5.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -83,6 +83,38 @@ body{
 }
 .woocommerce ul.products li, .woocommerce-page ul.products li{
     text-align: center;
+}
+
+/* li de catalogo de produto pagina inicial */
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 5px 5px 3px 3px;
+    height: 390px;
+}
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
+    background-color: #fff;
+}
+.woocommerce ul.products li.product:hover{/* Seleção Mouse */
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 6px;
+    transform:scale(1.02);
+
+}
+.woocommerce ul.products li.product a img {/* Dimensão Imagem do produto */
+    width: auto;
+    height: 230px;
+    margin-bottom: 0;
+    justify-content: center;
+    display: inherit;
+}
+.woocommerce .products .star-rating{/* Avaliação "Estrelas" */
+    margin: 0 0 0 0.5rem;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title{/* Nome Produto */
+    color: rgb(75, 74, 74);
+}
+.woocommerce ul.products li.product .price{/* Preço do Produto */
+    font-weight: bold;
 }
 
 /* Menu Painel do cliente  */

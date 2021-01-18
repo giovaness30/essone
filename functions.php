@@ -13,8 +13,7 @@ function load_stylesheets()
   wp_enqueue_style('stylesheet');
   
   wp_register_style('stylesheet-cart', get_template_directory_uri() . '/inc/css/style-cart.css', '', 1, 'all');
-	wp_enqueue_style('stylesheet-cart');
-
+  wp_enqueue_style('stylesheet-cart');
 }
 add_action('wp_enqueue_scripts', 'load_stylesheets');
 
