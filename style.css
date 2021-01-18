@@ -4,15 +4,15 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.5.8
+Version: 1.5.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
 Tags: one essystem loja virtual e-commerce woocommerce clientes essystem
 */
 
-/*----------- Starter
-----------------------------------------*/
+/*------------------------------------------ STARTER
+---------------------------------------------------------------------------------------------------------*/
 html{
     height: 100%;
 }
@@ -23,8 +23,8 @@ body{
 }
 
 
-/*----------- HEADER 
-----------------------------------------*/
+/*------------------------------------------ HEADER
+---------------------------------------------------------------------------------------------------------*/
 
 /* Nome do blog e descrição */
  .blog-title {
@@ -54,8 +54,8 @@ body{
     color: #000;
 }
 
-/*----------- HOME
-----------------------------------------*/
+/*------------------------------------------ HOME
+---------------------------------------------------------------------------------------------------------*/
 .essone-out-of-stock{
     color: red;
 }
@@ -64,15 +64,15 @@ body{
     padding-bottom: 1em;
 }
 
-/*----------- BODY
-----------------------------------------*/
+/*------------------------------------------ BODY
+---------------------------------------------------------------------------------------------------------*/
 #primary{
     margin-top: 3rem;
 }
 
 
-/*----------- WOOCOMMERCE
-----------------------------------------*/
+/*------------------------------------------ WOOCOMMERCE
+---------------------------------------------------------------------------------------------------------*/
 
 /* Centraliza conteudo da lista de produtos */
 .woocommerce ul.products li.first, .woocommerce-page ul.products li{
@@ -89,7 +89,7 @@ body{
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
     border: 1px solid rgb(219, 219, 219);
     border-radius: 5px 5px 3px 3px;
-    height: 400px;
+    /* height: em style-options */
 }
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
@@ -102,7 +102,7 @@ body{
 }
 .woocommerce ul.products li.product a img {/* Dimensão Imagem do produto */
     width: auto;
-    height: 230px;
+    /* height: em style-options */
     margin-bottom: 0;
     justify-content: center;
     display: inherit;
@@ -115,6 +115,11 @@ body{
 }
 .woocommerce ul.products li.product .price{/* Preço do Produto */
     font-weight: bold;
+}
+
+/* Margin Botão Ver opções */
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
+	margin-bottom:1rem
 }
 
 /* Menu Painel do cliente  */
@@ -173,8 +178,8 @@ body{
     display: none;
 }
 
-/*----------- FOOTER
-----------------------------------------*/
+/*------------------------------------------ FOOTER
+---------------------------------------------------------------------------------------------------------*/
 
 .blog-footer {
   padding: 2.5rem 0;
@@ -189,8 +194,8 @@ body{
 margin-bottom: 0;
 }
 
-/*----------- MEDIA (ALTERAÇÔES PARA LAYOUTs MOBILE)
-----------------------------------------*/
+/*------------------------------------------ MEDIA (ALTERAÇÔES PARA LAYOUTs MOBILE)
+---------------------------------------------------------------------------------------------------------*/
 
 /* DESKTOP */
 @media (min-width: 1200px) {
@@ -234,4 +239,18 @@ margin-bottom: 0;
 
 
 /**/
+/*### END ###*/
+
+/*------------------------------------------ STYLE PLUGINS TERCEIROS
+---------------------------------------------------------------------------------------------------------*/
+
+
+/* Extra Product Options (Product Addons) for WooCommerce -- Por ThemeHigh */
+
+.thwepo-extra-options {/* Pagina do produto */
+	margin-bottom: 1rem;
+	width:20rem
+}
+
+
 /*### END ###*/

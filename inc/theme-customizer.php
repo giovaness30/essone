@@ -303,7 +303,7 @@ $wp_customize->add_section( 'p-user', array(
    $wp_customize->add_section( 'customwoo_section', array(
 
     'title'    => __('Custom Woocommerce'),
-    'description' => '',
+    'description' => 'Todas alterações feitas aqui só serão visiveis depois de atualizar a pagina no site',
     'priority' => 40,
   )); 
 
@@ -332,6 +332,31 @@ $wp_customize->add_section( 'p-user', array(
     'description' => 'Quando sem conteudo = 23rem',
   )
   );
+  // Altera padrão da div de cada produto no Catálogo
+	$wp_customize->add_setting( 'alt_prod_catalog');
+
+  $wp_customize->add_control('alt_prod_catalog', array(
+    'type'      => 'text',
+    'settings'  => 'alt_prod_catalog',
+    'label'    => 'Altura padrão da div de cada produtos no catálogo',
+    'section'  => 'customwoo_section',
+    'priority' => 2,
+    'description' => 'Quando sem conteudo = 100%; "conforme mais conteúdo , maior"',
+  )
+  );
+  // Altera Altura da imagem produto no Catálogo
+	$wp_customize->add_setting( 'alt_img_catalog');
+
+  $wp_customize->add_control('alt_img_catalog', array(
+    'type'      => 'text',
+    'settings'  => 'alt_img_catalog',
+    'label'    => 'Altura padrão de cada imagem de produtos no catálogo',
+    'section'  => 'customwoo_section',
+    'priority' => 2,
+    'description' => 'Quando sem conteudo = 230px;',
+  )
+  );
+
 
       
   

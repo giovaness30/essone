@@ -3,8 +3,8 @@
  header('Content-Type: text/css; charset=UTF-8');
 ?>
 
-<!-- /*----------- HEADER 
-----------------------------------------*/ -->
+<!-- /*------------------------------------------ HEADER
+---------------------------------------------------------------------------------------------------------*/ -->
 .widget-right a{
     color: <?php echo get_theme_mod('color_text_header_content'); ?>;
 }
@@ -14,19 +14,21 @@
     background-color: <?php echo get_theme_mod('color_headerbg_content'); ?>;
 }
 
-<!-- /*----------- BODY
-----------------------------------------*/ -->
+<!-- /*------------------------------------------ BODY
+---------------------------------------------------------------------------------------------------------*/ -->
 .body{
     background-color: <?php echo get_theme_mod('color_bodybg_content'); ?>;
 }
 
 
-<!-- /*----------- WOOCOMMERCE
-----------------------------------------*/ -->
-.woocommerce button.button.alt{
+<!-- /*------------------------------------------ WOOCOMMERCE
+---------------------------------------------------------------------------------------------------------*/ -->
+
+<!-- /* Cor Primaria */ -->
+.woocommerce button.button.alt, .woocommerce ul.products li.product .button{
     background-color: <?php echo get_theme_mod('color_primary'); ?>;
 }
-.woocommerce button.button.alt:hover{
+.woocommerce button.button.alt:hover, .woocommerce ul.products li.product .button:hover{
     background-color: <?php echo get_theme_mod('color_primary_hover'); ?>;
 }
 
@@ -38,9 +40,15 @@
 .woocommerce div.product div.images.woocommerce-product-gallery{
     width: <?php if( get_theme_mod( 'larg_img_single' ) != ''){echo get_theme_mod('alt_img_single'); }else{echo '23rem';}?>;
 }
+<!-- /* Alinhamento produto no Catálogo*/ -->
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+    height: <?php if( get_theme_mod( 'alt_prod_catalog' ) != ''){echo get_theme_mod('alt_prod_catalog'); }else{echo '100%';}?>;
+}
+.woocommerce ul.products li.product a img {/* Dimensão Imagem do produto */
+    height: <?php if( get_theme_mod( 'alt_img_catalog' ) != ''){echo get_theme_mod('alt_img_catalog'); }else{echo '230px';}?>;
 
-<!-- /*----------- FOOTER
-----------------------------------------*/ -->
+<!-- /*------------------------------------------ FOOTER
+---------------------------------------------------------------------------------------------------------*/ -->
 
 #footer-widget{
     background-color: <?php echo get_theme_mod('color_widgetsbg_content'); ?>;
