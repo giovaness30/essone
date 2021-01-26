@@ -1,7 +1,7 @@
 <?php
 
-if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
-	$theme_header_bg = get_theme_mod('bgheader_content'); // Assigning it to a variable to keep the markup clean
+if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
+	$header_img_bg = get_theme_mod('header_img_bg'); // Assigning it to a variable to keep the markup clean
 }
   
 ?>
@@ -22,7 +22,7 @@ if( get_theme_mod( 'bgheader_content' ) != '') { // if there is a background img
 </head>
     <body <?php body_class(); ?>>
 
-        <header class="header-class col-12" style="background-image:url('<?php echo $theme_header_bg ?>');">
+        <header class="header-class col-12" style="background-image:url('<?php echo $header_img_bg ?>');">
 
             <div class="row justify-content-center align-items-center mx-lg-3" style="color: #fff">
 

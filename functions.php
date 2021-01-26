@@ -17,21 +17,18 @@ function load_stylesheets()
 }
 add_action('wp_enqueue_scripts', 'load_stylesheets');
 
-//Adiciona custom da pagina TEMA/PERSONALIZAR/
-include( get_template_directory() . '/inc/theme-customizer.php' );
-
-add_action('customize_register', 'essone_register');
-
 //Adiciona custom arquivos
 include( get_template_directory() . '/inc/cart.php' ) ;
 require_once get_template_directory() . '/inc/custom-ess.php';
+
+include( get_template_directory() . '/inc/customizer.php');
+include( get_template_directory() . '/customizer-css.php');
 
 //Suporte para tema personalizado
 function essone_theme_support(){
 
     add_theme_support('custom-logo');
     add_theme_support( 'post_thumbnails' );
-    // set_post_thumbnail_size( 200 , 150, true);
   }
   add_action('after_setup_theme', 'essone_theme_support');
 
@@ -401,3 +398,30 @@ return $menu_links;
 }
 
 } 
+
+// Trabalha com Personalizar
+add_action( 'customize_preview_init', 'cd_customizer' );
+function cd_customizer() {
+	wp_enqueue_script(
+		  'cd_customizer',
+		  get_template_directory_uri() . '/inc/js/customizer.js',
+		  array( 'jquery','customize-preview' ),
+		  '',
+		  true
+	);
+}
+
+/* Edição Notas */
+if( get_theme_mod( 'note_order' ) != '' ){
+
+function md_custom_woocommerce_checkout_fields( $fields ) 
+{
+    $note_order = get_theme_mod('note_order');
+    $fields['order']['order_comments']['placeholder'] = $note_order;
+    // $fields['order']['order_comments']['label'] = 'Add your special note';
+
+    return $fields;
+}
+add_filter( 'woocommerce_checkout_fields', 'md_custom_woocommerce_checkout_fields' );
+
+}
