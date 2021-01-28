@@ -22,7 +22,7 @@ include( get_template_directory() . '/inc/cart.php' ) ;
 require_once get_template_directory() . '/inc/custom-ess.php';
 
 include( get_template_directory() . '/inc/customizer.php');
-include( get_template_directory() . '/customizer-css.php');
+include( get_template_directory() . '/inc/css/customizer-css.php');
 
 //Suporte para tema personalizado
 function essone_theme_support(){
@@ -63,11 +63,28 @@ function essone_woocommerce_product_get_rating_html($html, $rating, $count){
   }
   add_filter( 'woocommerce_product_get_rating_html', 'essone_woocommerce_product_get_rating_html', 10, 3 );
 
+
+//widget esquerdo header
+function esquerdo_header_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Espaço lado esquerdo do Cabeçalho', 'essone'),
+       'id' => 'left_header_sidebar',
+       'description' => __( 'Utilizado quando o logo do site esta desabilitado em "Personalizar Tema".[logo-theme] = Mostra o logo', 'essone' ),
+       'before_widget' => '',
+       'after_widget' => '',
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+ add_action( 'widgets_init', 'esquerdo_header_sidebar' );
+
 //widget center header
 function center_header_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Espaço Central do Cabeçalho "header"', 'essone'),
+       'name' => __( 'Espaço Central do Cabeçalho', 'essone'),
        'id' => 'center_header_sidebar',
        'description' => __( 'Center Header essone theme', 'essone' ),
        'before_widget' => '<div class="widget-content">',
@@ -83,7 +100,7 @@ function center_header_sidebar() {
 function right_header_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Espaço Direito do Cabeçalho "header"', 'essone'),
+       'name' => __( 'Espaço Direito do Cabeçalho', 'essone'),
        'id' => 'right_header_sidebar',
        'description' => __( 'Right Header essone theme shotcodes = [cart-ess][user-icon][whats-icon]', 'essone' ),
        'before_widget' => '<div class="py-3 pl-2">',
@@ -425,3 +442,14 @@ function md_custom_woocommerce_checkout_fields( $fields )
 add_filter( 'woocommerce_checkout_fields', 'md_custom_woocommerce_checkout_fields' );
 
 }
+
+$args = array(
+    'taxonomy' => 'name-of-the-category',
+    'meta_query' => array(
+        array(
+            'key'       => 'ref',
+            'value'     => '53113',
+        ),
+    ),
+);
+$terms = get_terms( $args );

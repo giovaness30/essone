@@ -24,50 +24,54 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 
         <header class="header-class col-12" style="background-image:url('<?php echo $header_img_bg ?>');">
 
-            <div class="row justify-content-center align-items-center mx-lg-3" style="color: #fff">
+        <?php if (get_theme_mod('three_header','show') == 'show') : ?><!-- Pergunta se está habilitado 3 colunas no Personalizar tema -->
+            <div class="row  mx-lg-3">
 
-                <!-- Logo do site -->
-                <div class="col-12 col-lg-3 d-flex justify-content-center py-2"> 
+                <!-- widget esquerdo header -->
+                <div class="col-12 col-lg-4 d-flex justify-content-center py-2"> 
 
-                    <a class="text-muted" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <?php if (get_theme_mod('logo_header','show') == 'show') : ?>
+                        <!-- Logo do site -->
+                        <a class="text-muted" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                            <?php 
+                                $custom_logo_id = get_theme_mod('custom_logo');
+                                $logo = wp_get_attachment_image_src( $custom_logo_id, 'full');
 
-                        <?php 
-                            $custom_logo_id = get_theme_mod('custom_logo');
-                            $logo = wp_get_attachment_image_src( $custom_logo_id, 'full');
+                                if ( has_custom_logo() ){
+                                    echo '<img src="'. esc_url($logo[0]) . '"class="logo-header img-fluid">';
+                                } else {
+                                    echo '<h1>' . get_bloginfo('name'), '</h1>';
+                                    echo '<p class="lead">' . get_bloginfo('description') . '</p>';
+                                }
+                            ?>
+                        </a>
 
-                            if ( has_custom_logo() ){
-                                echo '<img src="'. esc_url($logo[0]) . '"class="logo-header img-fluid">';
-                            } else {
-                                echo '<h1>' . get_bloginfo('name'), '</h1>';
-                                echo '<p class="lead">' . get_bloginfo('description') . '</p>';
-                            }
-                        ?>
+                    <?php else:  
+                        if ( is_active_sidebar( 'left_header_sidebar' ) ) : ?>
+                        <div class="head-widget-left">
+                            <?php dynamic_sidebar( 'left_header_sidebar' ); ?>
+                        </div>
+                        <?php endif; ?>
 
-                    </a>
+                    <?php endif?>
 
                 </div>
 
                 <!-- widget central header -->
-                <?php
- 
-                    if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
-                        <div class="head-widget-one col-lg-4 col-12 py-2">
-                            <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
-                        </div>
-                    
-                <?php endif; ?>
-                
-                <!-- widget direito header -->
-                <?php
- 
-                    if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
-                        <div class="head-widget-two content col-md-8 col-lg-3 col-10 py-2 d-flex align-items-center justify-content-center">
-                            <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
-                        </div>
-                    
-                <?php endif; ?>
+                <div class="head-widget-center col-lg-4 col-12 d-flex justify-content-center py-2">
+                    <?php if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
+                        <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
+                    <?php endif; ?>
+                </div>
 
-                <!-- widget central header -->
+                <!-- widget direito header -->
+                <div class="head-widget-right content col-md-8 col-lg-4 col-10 py-2 d-flex align-items-center justify-content-center">
+                    <?php if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
+                        <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
+                    <?php endif; ?>
+                </div>
+                    
+                <!-- widget central after header -->
                 <div class="head-widget-center justify-content-center container">
                     <?php if(is_active_sidebar( 'header_center_sidebar' )){
                         dynamic_sidebar( 'header_center_sidebar' );
@@ -77,10 +81,9 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
                 </div>
 
             </div>
+        <?php endif?>
 
         </header>
-
-        
         
         <div id="menuprincipal" class="justify-content-center">
 		

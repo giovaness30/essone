@@ -2,6 +2,15 @@
 add_action( 'customize_register', 'cd_customizer_settings' );
 function cd_customizer_settings( $wp_customize ) {
 
+    /* -------------------PANEL do Personalizar
+    ---------------------------------------------------------------- */
+
+    $wp_customize->add_panel('woo_panel',array(
+        'title'=>'Custom Woocommerce',
+        'description'=> 'This is panel Description',
+        'priority'   => 40,
+    ));
+
     /* -------------------Seções do Personalizar
     ---------------------------------------------------------------- */
 
@@ -10,11 +19,59 @@ function cd_customizer_settings( $wp_customize ) {
         'priority'   => 30,
     ) );
     $wp_customize->add_section( 'gs_background' , array(
-        'title'      => 'Fundos Novo',
+        'title'      => 'Fundos',
         'priority'   => 33,
     ) );
 
-    /* ----------------------------Cores */
+	$wp_customize->add_section( 'top_section', array(
+
+        'title'    => __('Contatos', 'essystemstart2'),
+        'description' => '',
+        'priority' => 35,
+    ));	
+
+    $wp_customize->add_section( 'p-user', array(
+
+        'title'    => __('Layout Painel do Usuario', 'essystemstart2'),
+        'description' => '',
+        'priority' => 38,
+        ));	
+
+    /* Seções do panel CUSTOM WOOCOMMERCE */
+    $wp_customize->add_section( 'prod_section', array(
+
+        'title'    => __('Produtos'),
+        'description' => 'Alterações do Woocommerce',
+        'priority' => 40,
+        'panel'=>'woo_panel',
+    )); 
+
+    $wp_customize->add_section( 'checkout_section', array(
+
+        'title'    => __('Checkout'),
+        'description' => 'Alterações do Woocommerce',
+        'priority' => 40,
+        'panel'=>'woo_panel',
+    )); 
+
+    $wp_customize->add_section( 'painel_wp_section', array(
+
+        'title'    => __('Wordpress'),
+        'description' => '',
+        'priority' => 40,
+        'panel'=>'woo_panel',
+    )); 
+
+    $wp_customize->add_section( 'header', array(
+
+        'title'    => __('Header'),
+        'description' => '',
+        'priority' => 30,
+        'panel'=>'woo_panel',
+    )); 
+
+    /* -------------------Cores
+    ---------------------------------------------------------------- */
 
     /* Cor Cabeçalho */
     $wp_customize->add_setting( 'header_color' , array(
@@ -102,7 +159,8 @@ function cd_customizer_settings( $wp_customize ) {
             'section'  => 'gs_colors',		
         )));
 
-    /* ---------------------------- Fundos */
+    /* -------------------Fundos
+    ---------------------------------------------------------------- */
 
     /* Fundos Header*/
     $wp_customize->add_setting('header_img_bg', array(
@@ -130,38 +188,42 @@ function cd_customizer_settings( $wp_customize ) {
             'settings'  => 'footer_img_bg',		
         )));
 
-    /* ---------------------------- Woocommerce */
+    /* -------------------Wocoommerce
+    ---------------------------------------------------------------- */
 
-    /* panel */
-    $wp_customize->add_panel('woo_panel',array(
-        'title'=>'Custom Woocommerce',
-        'description'=> 'This is panel Description',
-    ));
+    // Habilita ou não Logo Cabeçalho
+    $wp_customize->add_setting( 'logo_header' , array(
+        'default'     => 'show',
+        'transport'   => 'refresh',
+    ) );
 
-    /* Seções */
-    $wp_customize->add_section( 'prod_section', array(
+    $wp_customize->add_control( 'logo_header', array(
+        'label' => 'Mostrar Logo do Site',
+        'section' => 'header',
+        'settings' => 'logo_header',
+        'type' => 'radio',
+        'choices' => array(
+          'show' => 'Mostrar Logo',
+          'hide' => 'Esconder logo',
+        ),
+      ) );
 
-        'title'    => __('Produtos'),
-        'description' => 'Alterações do Woocommerce',
-        'priority' => 40,
-        'panel'=>'woo_panel',
-    )); 
+    // Habilita Cabeçalho com 3 linhas Widget
+    $wp_customize->add_setting( 'three_header' , array(
+        'default'     => 'show',
+        'transport'   => 'refresh',
+    ) );
 
-    $wp_customize->add_section( 'checkout_section', array(
-
-        'title'    => __('Checkout'),
-        'description' => 'Alterações do Woocommerce',
-        'priority' => 40,
-        'panel'=>'woo_panel',
-    )); 
-
-    $wp_customize->add_section( 'painel_wp_section', array(
-
-        'title'    => __('Wordpress'),
-        'description' => '',
-        'priority' => 40,
-        'panel'=>'woo_panel',
-    )); 
+    $wp_customize->add_control( 'three_header', array(
+        'label' => 'Header com 3 Colunas de Widget',
+        'section' => 'header',
+        'settings' => 'three_header',
+        'type' => 'radio',
+        'choices' => array(
+          'show' => 'Habilitado',
+          'hide' => 'Esconder',
+        ),
+      ) );
 
     /* Imagem do logo login wordpress */
     $wp_customize->add_setting('login_img_wp', array(
@@ -265,15 +327,8 @@ function cd_customizer_settings( $wp_customize ) {
     )
     );
 
-    /* ---------------------------- Outros */
-
-    /* ## ITEM MENU ##  Contatos */
-	$wp_customize->add_section( 'top_section', array(
-
-        'title'    => __('Contatos', 'essystemstart2'),
-        'description' => '',
-        'priority' => 35,
-	));	
+    /* -------------------Outros
+    ---------------------------------------------------------------- */
 
 	/* TELEFONE */
 	$wp_customize->add_setting('contact_top', array(
@@ -337,15 +392,6 @@ function cd_customizer_settings( $wp_customize ) {
         'priority' => 1,
 		'description' => __( 'Texto padrão que aparece no campo da conversa Whatsapp', 'essystemstart2' ),		
     ));
-
-    /* Menu do painel */
-
-    $wp_customize->add_section( 'p-user', array(
-
-    'title'    => __('Layout Painel do Usuario', 'essystemstart2'),
-    'description' => '',
-    'priority' => 35,
-    ));	
 
     /* Texto do painel Usuarios */
 
