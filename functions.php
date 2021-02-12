@@ -245,12 +245,12 @@ function theme_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
-function dynamic_css_action() {
-  include ( 'style-options.php' );
-  exit;
-}
-add_action('wp_ajax_dynamic_css', 'dynamic_css_action');
-add_action('wp_ajax_nopriv_dynamic_css', 'dynamic_css_action');
+// function dynamic_css_action() {
+//   include ( 'style-options.php' );
+//   exit;
+// }
+// add_action('wp_ajax_dynamic_css', 'dynamic_css_action');
+// add_action('wp_ajax_nopriv_dynamic_css', 'dynamic_css_action');
 
 //######################### ALTERAÇÔES WOOCOMMERCE #########################//
 
@@ -361,12 +361,12 @@ if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce
       "billing_email",
       "billing_postcode",
       "billing_address_1", 
+      "billing_address_2", 
       "billing_neighborhood", 
       "billing_city",
       "billing_state",
       "billing_phone",
       "billing_number",
-      "billing_country",
 
   );
   foreach($order as $field)
@@ -387,6 +387,7 @@ if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce
   $fields['billing']['billing_address_1']['priority'] = 90;
   $fields['billing']['billing_number']['priority'] = 100;
   $fields['billing']['billing_neighborhood']['priority'] = 110;
+  $fields['billing']['billing_address_2']['priority'] = 115;
   $fields['billing']['billing_city']['priority'] = 120;
   $fields['billing']['billing_state']['priority'] = 130;
   $fields['billing']['billing_phone']['priority'] = 140;
@@ -402,6 +403,7 @@ if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce
   $fields['billing']['billing_state']['class'] = array('form-row-first col-12 col-md-6');
   $fields['billing']['billing_phone']['class'] = array('form-row-last col-12 col-md-6');
   $fields['billing']['billing_number']['class'] = array('form-row-last col-12 col-md-6');
+  $fields['billing']['billing_country']['class'] = array('');
   
   return $fields;
 }
@@ -442,14 +444,3 @@ function md_custom_woocommerce_checkout_fields( $fields )
 add_filter( 'woocommerce_checkout_fields', 'md_custom_woocommerce_checkout_fields' );
 
 }
-
-$args = array(
-    'taxonomy' => 'name-of-the-category',
-    'meta_query' => array(
-        array(
-            'key'       => 'ref',
-            'value'     => '53113',
-        ),
-    ),
-);
-$terms = get_terms( $args );

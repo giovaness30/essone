@@ -22,13 +22,13 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 </head>
     <body <?php body_class(); ?>>
 
-        <header class="header-class col-12" style="background-image:url('<?php echo $header_img_bg ?>');">
+        <header class="header-class col-12" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
 
         <?php if (get_theme_mod('three_header','show') == 'show') : ?><!-- Pergunta se está habilitado 3 colunas no Personalizar tema -->
             <div class="row  mx-lg-3">
 
                 <!-- widget esquerdo header -->
-                <div class="col-12 col-lg-4 d-flex justify-content-center py-2"> 
+                <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center py-2"> 
 
                     <?php if (get_theme_mod('logo_header','show') == 'show') : ?>
                         <!-- Logo do site -->
@@ -65,7 +65,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
                 </div>
 
                 <!-- widget direito header -->
-                <div class="head-widget-right content col-md-8 col-lg-4 col-10 py-2 d-flex align-items-center justify-content-center">
+                <div class="head-widget-right content col-md-8 col-lg-4 col-12 py-2 d-flex align-items-center justify-content-center">
                     <?php if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
                         <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                     <?php endif; ?>

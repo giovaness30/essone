@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.6.1
+Version: 1.6.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -20,6 +20,18 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100%;
+}
+body a{
+	color:#000;
+	text-decoration: none;
+}
+
+body a:link{
+	color:#000
+}
+body a:hover{
+	color:#000;
+	text-decoration: none;
 }
 
 /*------------------------------------------ HEADER
