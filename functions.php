@@ -87,8 +87,8 @@ function center_header_sidebar() {
        'name' => __( 'Espaço Central do Cabeçalho', 'essone'),
        'id' => 'center_header_sidebar',
        'description' => __( 'Center Header essone theme', 'essone' ),
-       'before_widget' => '<div class="widget-content">',
-       'after_widget' => "</div>",
+       'before_widget' => '',
+       'after_widget' => '',
        'before_title' => '<h3 class="widget-title">',
        'after_title' => '</h3>',
    )

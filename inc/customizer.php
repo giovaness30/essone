@@ -315,6 +315,23 @@ function cd_customizer_settings( $wp_customize ) {
     )
     );
 
+    // Habilita ou não Sombra nos produtos do catálogo
+    $wp_customize->add_setting( 'shadowcatalog' , array(
+        'default'     => 'show',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'shadowcatalog', array(
+        'label' => 'Produtos do catálogo com sombras',
+        'section' => 'prod_section',
+        'settings' => 'shadowcatalog',
+        'type' => 'radio',
+        'choices' => array(
+            'show' => 'Com sombras',
+            'hide' => 'Sem Sombras',
+        ),
+        ) );
+
     /* Descrição Da Informação adicional */
     $wp_customize->add_setting( 'note_order');
 

@@ -73,6 +73,30 @@ function cd_customizer_css()
             .woocommerce ul.products li.product a img {/* Dimensão Imagem do produto */
                 height: <?php if( get_theme_mod( 'alt_img_catalog' ) != ''){echo get_theme_mod('alt_img_catalog'); }else{echo '230px';}?>;
 
+            }
+            <?php if (get_theme_mod('shadowcatalog','show') == 'show') : ?>
+                .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+                    border: 1px solid rgb(219, 219, 219);
+                    border-radius: 5px 5px 3px 3px;
+                    /* height: em style-options */
+                }
+                .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+                    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 6px;
+                    background-color: #fff;
+                }   
+                .woocommerce ul.products li.product:hover{/* Seleção Mouse */
+                    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 6px;
+                    transform:scale(1.02);
+
+                }
+
+            <?php endif ?>
+
+            /* Retira link loja do painel */
+            #wp-admin-bar-view-store{
+                display: none;
+            }
+
 
          </style>
     <?php
