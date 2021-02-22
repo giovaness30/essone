@@ -42,12 +42,19 @@ global $product;
 <?php
 $current_user = wp_get_current_user();
 
-if( in_array( 'shop_manager', (array) $current_user->roles  ) || in_array( 'administrator', (array) $current_user->roles  ) && is_plugin_active( 'pw-woocommerce-affiliates/pw-affiliates.php' )) {
-global $wp;
-$current_url = home_url(add_query_arg(array(), $wp->request));
+if( in_array( 'contributor', (array) $current_user->roles  ) || in_array( 'shop_manager', (array) $current_user->roles  ) || in_array( 'administrator', (array) $current_user->roles  ) && is_plugin_active( 'pw-woocommerce-affiliates/pw-affiliates.php' )) {
+  
+  /* Chama conteudo do plugin wp-afiliate */
+  $affiliate_code = pwwa_current_user_affiliate_code();
+  global $pw_affiliates;
+  $affiliate = new PW_Affiliate( $affiliate_code );
 
-$urlCompleto = $current_url.'/?afili='.$current_user->user_firstname.'';
-echo '<br><input type="text" id="link" name="link" value="'.$urlCompleto.'" readonly> <button class="btn-success" onClick="copiarTexto()">Link do Vendedor</button>';
+  /* Criação do link com caminho do produto atual */
+  global $wp;
+  $current_url = home_url(add_query_arg(array(), $wp->request));
+  $urlCompleto = $current_url.'/?afili='.$affiliate->get_code().'';
+  
+  echo '<br><input type="text" id="link" name="link" value="'. $urlCompleto .'" readonly> <button class="btn-success" onClick="copiarTexto()">Link do Vendedor</button>';
 
 } 
 
