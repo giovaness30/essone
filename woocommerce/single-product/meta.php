@@ -42,7 +42,7 @@ global $product;
 <?php
 $current_user = wp_get_current_user();
 
-if( in_array( 'shop_manager', (array) $current_user->roles  ) || in_array( 'administrator', (array) $current_user->roles  ) && is_plugin_active( 'pw-woocommerce-affiliates/pw-affiliates.php' )) {
+if( in_array( 'collaborator', (array) $current_user->roles  ) || in_array( 'shop_manager', (array) $current_user->roles  ) || in_array( 'administrator', (array) $current_user->roles  ) && is_plugin_active( 'pw-woocommerce-affiliates/pw-affiliates.php' )) {
 global $wp;
 $current_url = home_url(add_query_arg(array(), $wp->request));
 
