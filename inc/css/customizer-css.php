@@ -74,6 +74,7 @@ function cd_customizer_css()
                 height: <?php if( get_theme_mod( 'alt_img_catalog' ) != ''){echo get_theme_mod('alt_img_catalog'); }else{echo '230px';}?>;
 
             }
+            /* Sombra no Catalogo de produtos */
             <?php if (get_theme_mod('shadowcatalog','show') == 'show') : ?>
                 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
                     border: 1px solid rgb(219, 219, 219);
@@ -88,6 +89,14 @@ function cd_customizer_css()
                     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 6px;
                     transform:scale(1.02);
 
+                }
+
+            <?php endif ?>
+
+            /* Politica woocommerce */
+            <?php if (get_theme_mod('politywoo','show') == 'hide') : ?>
+                .woocommerce-terms-and-conditions-wrapper{
+                    display: none;
                 }
 
             <?php endif ?>

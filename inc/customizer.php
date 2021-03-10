@@ -344,6 +344,24 @@ function cd_customizer_settings( $wp_customize ) {
     )
     );
 
+    // Habilita ou não Politica de compra
+    $wp_customize->add_setting( 'politywoo' , array(
+        'default'     => 'hide',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'politywoo', array(
+        'label' => 'Politica de compra antes do botão "Finalizar Compra"',
+        'description' => 'Politica de compra padrão do Woocommerce que aparece no Checkout.',
+        'section' => 'checkout_section',
+        'settings' => 'politywoo',
+        'type' => 'radio',
+        'choices' => array(
+            'show' => 'Habilitado',
+            'hide' => 'Desabilitado',
+        ),
+        ) );
+
     /* -------------------Outros
     ---------------------------------------------------------------- */
 

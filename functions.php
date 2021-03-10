@@ -245,13 +245,6 @@ function theme_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 
-// function dynamic_css_action() {
-//   include ( 'style-options.php' );
-//   exit;
-// }
-// add_action('wp_ajax_dynamic_css', 'dynamic_css_action');
-// add_action('wp_ajax_nopriv_dynamic_css', 'dynamic_css_action');
-
 //######################### ALTERAÇÔES WOOCOMMERCE #########################//
 
 //Texto Fora de estoque
@@ -341,73 +334,6 @@ unset($fields['billing']['billing_country']); //remover país
 return $fields;
 }
 
-
-/*Checa se o plugin Brazilian Market do Caludio esta ativado.*/
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-if ( is_plugin_active( 'woocommerce-extra-checkout-fields-for-brazil/woocommerce-extra-checkout-fields-for-brazil.php' ) ) {
-   
-    //Alterações no campos do Checkout, edições feitas junto com algumas em /inc/js/custom.js
-  add_filter("woocommerce_checkout_fields", "order_fields");
-  function order_fields($fields) {
-
-    $order = array(
-      "billing_persontype",
-      "billing_first_name", 
-      "billing_last_name", 
-      "billing_company", 
-      "billing_cnpj",
-      "billing_cpf",
-      "billing_email",
-      "billing_postcode",
-      "billing_address_1", 
-      "billing_address_2", 
-      "billing_neighborhood", 
-      "billing_city",
-      "billing_state",
-      "billing_phone",
-      "billing_number",
-
-  );
-  foreach($order as $field)
-  {
-      $ordered_fields[$field] = $fields["billing"][$field];
-  }
-
-  $fields["billing"] = $ordered_fields;
-
-  $fields['billing']['billing_persontype']['priority'] = 10;
-  $fields['billing']['billing_company']['priority'] = 20;
-  $fields['billing']['billing_cpf']['priority'] = 30;
-  $fields['billing']['billing_cnpj']['priority'] = 40;
-  $fields['billing']['billing_first_name']['priority'] = 50;
-  $fields['billing']['billing_last_name']['priority'] = 60;
-  $fields['billing']['billing_email']['priority'] = 70;
-  $fields['billing']['billing_postcode']['priority'] = 80;
-  $fields['billing']['billing_address_1']['priority'] = 90;
-  $fields['billing']['billing_number']['priority'] = 100;
-  $fields['billing']['billing_neighborhood']['priority'] = 110;
-  $fields['billing']['billing_address_2']['priority'] = 115;
-  $fields['billing']['billing_city']['priority'] = 120;
-  $fields['billing']['billing_state']['priority'] = 130;
-  $fields['billing']['billing_phone']['priority'] = 140;
-  $fields['billing']['billing_country']['priority'] = 150;
-  
-
-  $fields['billing']['billing_company']['class'] = array('col-12 col-md-6 float-left');
-  $fields['billing']['billing_cnpj']['class'] = array( 'form-row-last' );
-  $fields['billing']['billing_email']['class'] = array('form-row-first col-12 col-md-6');
-  $fields['billing']['billing_postcode']['class'] = array('form-row-last col-12 col-md-6');
-  $fields['billing']['billing_address_1']['class'] = array('form-row-first col-12 col-md-6');
-  $fields['billing']['billing_city']['class'] = array('form-row-last col-12 col-md-6');
-  $fields['billing']['billing_state']['class'] = array('form-row-first col-12 col-md-6');
-  $fields['billing']['billing_phone']['class'] = array('form-row-last col-12 col-md-6');
-  $fields['billing']['billing_number']['class'] = array('form-row-last col-12 col-md-6');
-  $fields['billing']['billing_country']['class'] = array('');
-  
-  return $fields;
-}
-
 /* Remove Painel e downloads do menu da conta de Usuarios */
 add_filter ( 'woocommerce_account_menu_items', 'remove_my_account_items' );
 function remove_my_account_items( $menu_links ){
@@ -415,8 +341,6 @@ unset( $menu_links['dashboard'] );
 unset($menu_links['downloads']);
 return $menu_links;
 }
-
-} 
 
 // Trabalha com Personalizar
 add_action( 'customize_preview_init', 'cd_customizer' );
