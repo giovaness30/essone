@@ -16,6 +16,23 @@ if(urlSite.indexOf('finalizar-compra') != -1){
 
     var h3Title = document.querySelector('.woocommerce-billing-fields h3');
     h3Title.style.display = "none";
+
+    // Correção dos compos de checkout com Brazilian market.
+    document.querySelector('.woocommerce-billing-fields__field-wrapper').classList.add('row');
+    var wooform = document.querySelector('.woocommerce-billing-fields__field-wrapper').children
+
+    for (var i = 0; i < wooform.length; i++){
+        wooform[i].classList.remove('form-row-first');
+        wooform[i].classList.remove('form-row-last');
+        wooform[i].classList.remove('form-row-wide');
+        wooform[i].classList.add('col-6');
+    }
+
+    var wooformlabel = document.querySelectorAll('.woocommerce-billing-fields__field-wrapper p label');
+
+    for (var i = 0; i < wooformlabel.length; i++){
+        wooformlabel[i].classList.add('w-100');
+    }
     
 }
 

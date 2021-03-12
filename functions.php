@@ -327,12 +327,12 @@ function bbloomer_save_name_fields( $customer_id ) {
  
 }
 
-// Remove País dos campos de Checkout
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
-function custom_override_checkout_fields( $fields ) {
-unset($fields['billing']['billing_country']); //remover país
-return $fields;
-}
+// // Remove País dos campos de Checkout
+// add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+// function custom_override_checkout_fields( $fields ) {
+// unset($fields['billing']['billing_country']); //remover país
+// return $fields;
+// }
 
 /* Remove Painel e downloads do menu da conta de Usuarios */
 add_filter ( 'woocommerce_account_menu_items', 'remove_my_account_items' );

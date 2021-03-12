@@ -22,7 +22,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 </head>
     <body <?php body_class(); ?>>
 
-        <header class="header-class col-12" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
+        <header class="header-class col-12 py-2" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
 
         <?php if (get_theme_mod('three_header','show') == 'show') : ?><!-- Pergunta se está habilitado 3 colunas no Personalizar tema -->
             <div class="row  mx-lg-3">
@@ -58,7 +58,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
                 </div>
 
                 <!-- widget central header -->
-                <div class="head-widget-center col-lg-4 col-12 d-flex justify-content-center py-2">
+                <div class="head-widget-center col-lg-4 col-12 d-flex justify-content-center py-2 align-items-center">
                     <?php if ( is_active_sidebar( 'center_header_sidebar' ) ) : ?>
                         <?php dynamic_sidebar( 'center_header_sidebar' ); ?>
                     <?php endif; ?>

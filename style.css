@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.6.5
+Version: 1.6.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -31,7 +31,6 @@ body a:link{
 }
 body a:hover{
 	color:#000;
-	text-decoration: none;
 }
 
 /*------------------------------------------ HEADER
@@ -169,11 +168,26 @@ body a:hover{
     max-width: 100%;
 }
 
-/* Retira Seleção de país no checkout */
-#billing_country{
+/* Esconde Seleção de país no checkout */
+#billing_country_field, #billing_first_name_field, #billing_last_name_field{
     display: none;
 }
 
+/* Ordenação do campos checkout */
+
+#billing_persontype_field  { order: 1;}
+#billing_company_field     { order: 3;}
+#billing_cnpj_field        { order: 2;}
+#billing_cpf_field         { order: 2;}
+#billing_email_field       { order: 3;}
+#billing_postcode_field    { order: 4;}
+#billing_address_1_field   { order: 5;}
+#billing_number_field      { order: 6;}
+#billing_address_2_field   { order: 7;}
+#billing_neighborhood_field{ order: 8;}
+#billing_city_field        { order: 9;}
+#billing_state_field       { order: 10;}
+#billing_phone_field       { order: 11;}
 /*------------------------------------------ FOOTER
 ---------------------------------------------------------------------------------------------------------*/
 
