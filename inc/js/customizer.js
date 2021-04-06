@@ -36,6 +36,16 @@
             $( '.woocommerce button.button.alt:hover, .woocommerce ul.products li.product .button:hover' ).css( 'background-color', newval );
         } );
     } );
+    wp.customize( 'essone_widget_color', function( value ) {
+        value.bind( function( newval ) {
+            $( '.footer-widget' ).css( 'color', newval );
+        } );
+    } );
+    wp.customize( 'footer_widget_bg', function( value ) {
+        value.bind( function( newval ) {
+            $( '.footer-widget' ).css( 'background-color', newval );
+        } );
+    } );
 
 
   } )( jQuery );

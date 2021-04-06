@@ -68,10 +68,10 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 								if ( ! empty( $actions ) ) {
 									foreach ( $actions as $key => $action ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 										echo '<div class="row"><a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button button ' . sanitize_html_class( $key ) . '">' . esc_html( $action['name'] ) . '</a>';
-										echo '<div class="pl-2"><form method="POST" target="_blank" rel="nofollow noopener noreferrer" action="https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm" class="wc-correios-tracking__form">
+										if ($order->get_meta('_correios_tracking_code') <> ''){echo '<div class="pl-2"><form method="POST" target="_blank" rel="nofollow noopener noreferrer" action="https://www2.correios.com.br/sistemas/rastreamento/resultado.cfm" class="wc-correios-tracking__form">
 											<input type="hidden" name="Objetos" value="'.$order->get_meta( '_correios_tracking_code' ).'">
 											<input class="wc-correios-tracking__button button" type="submit" value="Acompanhar Envio">
-										</form></div></div>';
+										</form></div></div>';};
 									}
 								}
 								?>

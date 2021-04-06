@@ -37,22 +37,26 @@ function cd_customizer_css()
             <?php echo get_theme_mod('style_wp_painel') ?>
 
             /* Tema */
-            .header-class{ background-color:<?php echo get_theme_mod('header_color', '#43C6E4'); ?>;}
+            .header-class{ background-color:<?php echo get_theme_mod('header_color'); ?>;}
 
-            .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color', '#43C6E4'); ?>;}
+            .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color'); ?>;}
             
-            .body { background-color:#<?php echo get_theme_mod('background_color', '#43C6E4'); ?>;}
+            .body { background-color:#<?php echo get_theme_mod('background_color'); ?>;}
 
             .woocommerce button.button.alt, .woocommerce ul.products li.product .button{
-            color:<?php echo get_theme_mod('primary_text_color', '#43C6E4'); ?>;}
+            color:<?php echo get_theme_mod('primary_text_color'); ?>;}
 
             .woocommerce button.button.alt, .woocommerce ul.products li.product .button{
-            background-color:<?php echo get_theme_mod('primary_color', '#43C6E4'); ?>;}
+            background-color:<?php echo get_theme_mod('primary_color'); ?>;}
 
             .woocommerce button.button.alt:hover, .woocommerce ul.products li.product .button:hover{
             background-color: <?php echo get_theme_mod('primary_color_hover'); ?>;}
 
-            .footer-widget{ background-color:<?php echo get_theme_mod('footer_widget_bg'); ?>;}
+            /* Widgets Footer */
+            .footer-widget{ 
+                background-color:<?php echo get_theme_mod('footer_widget_bg'); ?>;
+                color:<?php echo get_theme_mod('essone_widget_color'); ?>;
+            }
 
             .widget-right a{color: <?php echo get_theme_mod('color_text_header_content'); ?>;
             }

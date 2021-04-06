@@ -75,8 +75,8 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Cabeçalho */
     $wp_customize->add_setting( 'header_color' , array(
-        'default'     => '#43C6E4',
-        'transport'   => 'refresh',
+        'default'     => '#ffffff',
+        'transport'   => 'postMessage',
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_color', array(
@@ -87,7 +87,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Texto Cabeçalho */
     $wp_customize->add_setting( 'header_text_color' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#000000',
         'transport'   => 'refresh',
     ) );
 
@@ -111,7 +111,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Texto Primária*/
     $wp_customize->add_setting( 'primary_text_color' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#ffffff',
         'transport'   => 'postMessage',
     ) );
 
@@ -123,7 +123,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Primária*/
     $wp_customize->add_setting( 'primary_color' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#4d932c',
         'transport'   => 'postMessage',
     ) );
 
@@ -135,7 +135,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Primária hover*/
     $wp_customize->add_setting( 'primary_color_hover' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#5ad602',
         'transport'   => 'refresh',
     ) );
 
@@ -147,8 +147,8 @@ function cd_customizer_settings( $wp_customize ) {
 
     //Background color widget
     $wp_customize->add_setting('footer_widget_bg', array(
-        'default'		=> '#43C6E4',
-        'transport'   => 'refresh',
+        'default'		=> '#dddddd',
+        'transport'   => 'postMessage',
 
     ));	
 
@@ -158,6 +158,18 @@ function cd_customizer_settings( $wp_customize ) {
             'label'    => 'Cor do Fundo Area Widgets',
             'section'  => 'gs_colors',		
         )));
+
+    /* Cor Texto widget*/
+    $wp_customize->add_setting( 'essone_widget_color' , array(
+        'default'     => '#000000',
+        'transport'   => 'postMessage',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_widget_color', array(
+        'label'        => 'Cor do texto Widget',
+        'section'    => 'gs_colors',
+        'settings'   => 'essone_widget_color',
+    ) ) );
 
     /* -------------------Fundos
     ---------------------------------------------------------------- */
