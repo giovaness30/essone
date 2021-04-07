@@ -371,7 +371,15 @@ add_filter( 'woocommerce_checkout_fields', 'md_custom_woocommerce_checkout_field
 
 /* Adiciona nova função de usuário */
 function essone_custom_roles(){
-  add_role('contributor_essone_lv','Colaborador Loja Virtual', array('read_shop_order' => true,'edit_shop_orders' => true, 'read' => true, 'edit_posts' => true
+  remove_role('contributor_essone_lv');
+  add_role('contributor_essone_lv','Colaborador Loja Virtual', array(
+    'read_shop_order'         => true,
+    'read_shop_orders'        => true,
+    'edit_shop_orders'        => true,
+    'edit_shop_order'         => true,
+    'edit_others_shop_orders' => true,
+    'read'                    => true,
+    'edit_posts'              => true
 ));
 }
 add_action('init','essone_custom_roles');
