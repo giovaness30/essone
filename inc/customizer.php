@@ -1,4 +1,37 @@
 <?php
+
+ /* Function control slide */
+ if( class_exists( 'WP_Customize_Control' ) ) {
+    class WP_Customize_Range extends WP_Customize_Control {
+        public $type = 'range';
+
+        public function __construct( $manager, $id, $args = array() ) {
+            parent::__construct( $manager, $id, $args );
+            $defaults = array(
+                'min' => 0,
+                'max' => 10,
+                'step' => 1
+            );
+            $args = wp_parse_args( $args, $defaults );
+
+            $this->min = $args['min'];
+            $this->max = $args['max'];
+            $this->step = $args['step'];
+        }
+
+        public function render_content() {
+        ?>
+        <label>
+            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+            <input class='range-slider' min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" step="<?php echo $this->step ?>" type='range' <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" oninput="jQuery(this).next('input').val( jQuery(this).val() )">
+            <input onKeyUp="jQuery(this).prev('input').val( jQuery(this).val() )" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+
+        </label>
+        <?php
+        }
+    }
+}
+
 add_action( 'customize_register', 'cd_customizer_settings' );
 function cd_customizer_settings( $wp_customize ) {
 
@@ -38,9 +71,18 @@ function cd_customizer_settings( $wp_customize ) {
         ));	
 
     /* Seções do panel CUSTOM WOOCOMMERCE */
-    $wp_customize->add_section( 'prod_section', array(
+    $wp_customize->add_section( 'prod_section_catalog', array(
 
-        'title'    => __('Produtos'),
+        'title'    => __('Catalogo de produtos'),
+        'description' => 'Alterações do Woocommerce',
+        'priority' => 40,
+        'panel'=>'woo_panel',
+    )); 
+
+    /* Seções do panel CUSTOM WOOCOMMERCE */
+    $wp_customize->add_section( 'prod_section_pag', array(
+
+        'title'    => __('Pagina do Produtos'),
         'description' => 'Alterações do Woocommerce',
         'priority' => 40,
         'panel'=>'woo_panel',
@@ -65,6 +107,14 @@ function cd_customizer_settings( $wp_customize ) {
     $wp_customize->add_section( 'header', array(
 
         'title'    => __('Header'),
+        'description' => '',
+        'priority' => 30,
+        'panel'=>'woo_panel',
+    )); 
+
+    $wp_customize->add_section( 'layout', array(
+
+        'title'    => __('Estilo da Página'),
         'description' => '',
         'priority' => 30,
         'panel'=>'woo_panel',
@@ -282,7 +332,7 @@ function cd_customizer_settings( $wp_customize ) {
       'type'      => 'text',
       'settings'  => 'alt_img_single',
       'label'    => 'Altura da imagem pagina do produto "height"',
-      'section'  => 'prod_section',
+      'section'  => 'prod_section_pag',
       'priority' => 2,
       'description' => 'Quando sem conteudo = 30rem',
     )
@@ -295,7 +345,7 @@ function cd_customizer_settings( $wp_customize ) {
       'type'      => 'text',
       'settings'  => 'larg_img_single',
       'label'    => 'Largura da imagem pagina do produto "width"',
-      'section'  => 'prod_section',
+      'section'  => 'prod_section_pag',
       'priority' => 2,
       'description' => 'Quando sem conteudo = 23rem',
     )
@@ -308,7 +358,7 @@ function cd_customizer_settings( $wp_customize ) {
       'type'      => 'text',
       'settings'  => 'alt_prod_catalog',
       'label'    => 'Altura padrão da div de cada produtos no catálogo',
-      'section'  => 'prod_section',
+      'section'  => 'prod_section_catalog',
       'priority' => 2,
       'description' => 'Quando sem conteudo = 100%; "conforme mais conteúdo , maior"',
     )
@@ -321,7 +371,7 @@ function cd_customizer_settings( $wp_customize ) {
       'type'      => 'text',
       'settings'  => 'alt_img_catalog',
       'label'    => 'Altura padrão de cada imagem de produtos no catálogo',
-      'section'  => 'prod_section',
+      'section'  => 'prod_section_catalog',
       'priority' => 2,
       'description' => 'Quando sem conteudo = 230px;',
     )
@@ -335,7 +385,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( 'shadowcatalog', array(
         'label' => 'Produtos do catálogo com sombras',
-        'section' => 'prod_section',
+        'section' => 'prod_section_catalog',
         'settings' => 'shadowcatalog',
         'type' => 'radio',
         'choices' => array(
@@ -343,6 +393,20 @@ function cd_customizer_settings( $wp_customize ) {
             'hide' => 'Sem Sombras',
         ),
         ) );
+
+    /* Tamanho Titulo Produtos Catalogo de produtos */
+    $wp_customize->add_setting( 'essone_letter_title_prod' , array(
+        'default'     => 12,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_letter_title_prod', array(
+        'label'	=>  'Tamanho do Titulo dos Produtos',
+        'min' => 1,
+        'max' => 35,
+        'step' => 1,
+        'section' => 'prod_section_catalog',
+    ) ) );
 
     /* Descrição Da Informação adicional */
     $wp_customize->add_setting( 'note_order');
@@ -373,6 +437,25 @@ function cd_customizer_settings( $wp_customize ) {
             'hide' => 'Desabilitado',
         ),
         ) );
+
+        /***** LAYOUT *****/
+
+        // Layout pagina
+        $wp_customize->add_setting( 'essone_pag_layout' , array(
+            'default'     => 'layout-wide',
+            'transport'   => 'refresh',
+        ) );
+    
+        $wp_customize->add_control( 'essone_pag_layout', array(
+            'label' => 'Estilo da pagina inicial',
+            'section' => 'layout',
+            'settings' => 'essone_pag_layout',
+            'type' => 'radio',
+            'choices' => array(
+                'layout-left' => 'Página com Sidebar Lateral',
+                'layout-wide' => 'Página Inteira (Wide)',
+            ),
+            ) );
 
     /* -------------------Outros
     ---------------------------------------------------------------- */

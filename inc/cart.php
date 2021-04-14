@@ -51,7 +51,7 @@ if ( ! function_exists( 'newstore_woocommerce_cart_link' ) ) {
    */
   function newstore_woocommerce_cart_link() {
     ?>
-    <a class="cart-link-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
+      <div class="cart-link-contents">
       <div class="header-cart-top-link-left">
       <span class="icon"><i class="fa fa-shopping-basket"></i></span>
       <span class="count"><?php echo esc_html( WC()->cart->get_cart_contents_count() ); ?></span>
@@ -60,7 +60,7 @@ if ( ! function_exists( 'newstore_woocommerce_cart_link' ) ) {
         <div class="label"><?php esc_html_e( 'Total', 'newstore' ); ?></div>
         <div class="amount"><?php echo WC()->cart->get_cart_subtotal();  ?></div>
       </div>
-    </a>
+    </div>
     <?php
   }
 }

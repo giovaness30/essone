@@ -140,11 +140,18 @@
     opacity: 0;
 }
 
+/* Mobile */
+@media screen and (min-width: 300px) and (max-width: 767px) {
+
+    .header-cart-conetnts{
+        right: 1em;
+    }
+ }
+
 .header-cart-conetnts:before,
 .header-cart-conetnts:after {
     position: absolute;
     content: "";
-
 }
 
 .header-cart-conetnts:before {
@@ -160,6 +167,7 @@
     border-color: transparent transparent #f0f0f0 transparent;
     right: 34px;
     top: -22px;
+
 }
 
 .header-cart-top-left {

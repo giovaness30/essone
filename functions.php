@@ -160,6 +160,22 @@ function slide_sidebar() {
 }
 add_action( 'widgets_init', 'slide_sidebar' );
 
+//widget left Home Page
+function left_sidebar() {
+  register_sidebar(
+   array (
+      'name' => __( 'Widgets Lateral da pagina', 'essone'),
+      'id' => 'left_sidebar',
+      'description' => __( 'Altere o Modelo de pagina da home para "Slider Home" e adiciona o Shortcode aqui!', 'essone' ),
+      'before_widget' => '<div class="widget-content" style="margin:0">',
+      'after_widget' => "</div>",
+      'before_title' => '<h3 class="widget-title">',
+      'after_title' => '</h3>',
+  )
+);
+}
+add_action( 'widgets_init', 'left_sidebar' );
+
 //widget footer 1
 function footer1_sidebar() {
   register_sidebar(
@@ -383,3 +399,15 @@ function essone_custom_roles(){
 ));
 }
 add_action('init','essone_custom_roles');
+
+
+/* Tamanho titulo de produtos */
+add_filter( 'the_title', 'shorten_woo_product_title', 10, 2 );
+function shorten_woo_product_title( $title, $id ) {
+  if (get_theme_mod('essone_letter_title_prod') != ''){$title_prod = get_theme_mod('essone_letter_title_prod');}else{ $title_prod = 20;};
+    if ( ! is_singular( array( 'product' ) ) && get_post_type( $id ) === 'product' && strlen( $title ) > $title_prod ) {
+        return substr( $title, 0, $title_prod) . '…'; // change last number to the number of characters you want
+    } else {
+        return $title;
+    }
+}
