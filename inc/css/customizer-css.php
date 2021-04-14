@@ -52,6 +52,11 @@ function cd_customizer_css()
             .woocommerce button.button.alt:hover, .woocommerce ul.products li.product .button:hover{
             background-color: <?php echo get_theme_mod('primary_color_hover'); ?>;}
 
+            /* Botão concluir compra pagina do carrinho  */
+            .woocommerce-cart .wc-proceed-to-checkout a.checkout-button{
+                background-color: <?php echo get_theme_mod('primary_color'); ?>;
+            }
+
             /* Widgets Footer */
             .footer-widget{ 
                 background-color:<?php echo get_theme_mod('footer_widget_bg'); ?>;
@@ -110,6 +115,13 @@ function cd_customizer_css()
                 display: none;
             }
 
+            /* Estilo da barra lateral */
+            <?php if (get_theme_mod('essone_pag_layout_style')  == '1'):?>
+            .widget-left{
+                border-right: 1px solid #d6d6d6;
+                padding: 20px;
+            }
+            <?php endif ?>
 
          </style>
     <?php

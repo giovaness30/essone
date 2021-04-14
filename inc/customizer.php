@@ -79,7 +79,6 @@ function cd_customizer_settings( $wp_customize ) {
         'panel'=>'woo_panel',
     )); 
 
-    /* Seções do panel CUSTOM WOOCOMMERCE */
     $wp_customize->add_section( 'prod_section_pag', array(
 
         'title'    => __('Pagina do Produtos'),
@@ -455,6 +454,36 @@ function cd_customizer_settings( $wp_customize ) {
                 'layout-left' => 'Página com Sidebar Lateral',
                 'layout-wide' => 'Página Inteira (Wide)',
             ),
+            ) );
+                // Layout pagina
+        $wp_customize->add_setting( 'essone_pag_layout' , array(
+            'default'     => 'layout-wide',
+            'transport'   => 'refresh',
+        ) );
+    
+        $wp_customize->add_control( 'essone_pag_layout', array(
+            'label' => 'Estilo da pagina inicial',
+            'section' => 'layout',
+            'settings' => 'essone_pag_layout',
+            'type' => 'radio',
+            'choices' => array(
+                'layout-left' => 'Página com Sidebar Lateral',
+                'layout-wide' => 'Página Inteira (Wide)',
+            ),
+            ) );
+
+        // Estilo dos widgets lateral
+        $wp_customize->add_setting( 'essone_pag_layout_style' , array(
+            'default'     => '',
+            'transport'   => 'refresh',
+        ) );
+    
+        $wp_customize->add_control( 'essone_pag_layout_style', array(
+            'label' => 'Habilita separador Widgets lateral',
+            'section' => 'layout',
+            'settings' => 'essone_pag_layout_style',
+            'type' => 'checkbox',
+            'std'  => '0'
             ) );
 
     /* -------------------Outros
