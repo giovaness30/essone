@@ -52,9 +52,28 @@ function cd_customizer_css()
             .woocommerce button.button.alt:hover, .woocommerce ul.products li.product .button:hover{
             background-color: <?php echo get_theme_mod('primary_color_hover'); ?>;}
 
+            .woocommerce button.button{
+                background-color: <?php echo get_theme_mod('primary_color'); ?> !important;
+                color:<?php echo get_theme_mod('primary_text_color'); ?> !important;
+            }
+            .woocommerce button.button:hover{
+                background-color: <?php echo get_theme_mod('primary_color_hover'); ?> !important;
+            }
+
+            p.woocommerce-mini-cart__buttons.buttons .button.checkout{
+                background-color: <?php echo get_theme_mod('primary_color'); ?> !important;
+                color:<?php echo get_theme_mod('primary_text_color'); ?> !important;
+            }
+            p.woocommerce-mini-cart__buttons.buttons .button.checkout:hover{
+                background-color: <?php echo get_theme_mod('primary_color_hover'); ?> !important;
+            }
+
             /* Botão concluir compra pagina do carrinho  */
             .woocommerce-cart .wc-proceed-to-checkout a.checkout-button{
                 background-color: <?php echo get_theme_mod('primary_color'); ?>;
+            }
+            .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover{
+                background-color: <?php echo get_theme_mod('primary_color_hover'); ?>;
             }
 
             /* Widgets Footer */
@@ -122,6 +141,10 @@ function cd_customizer_css()
                 padding: 20px;
             }
             <?php endif ?>
+
+            td #header_wrapper{
+                background-color: #000 !important;
+            }
 
          </style>
     <?php

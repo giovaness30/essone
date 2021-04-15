@@ -411,3 +411,10 @@ function shorten_woo_product_title( $title, $id ) {
         return $title;
     }
 }
+
+// Customizar texto rodapé dos e-mails enviados
+add_action( 'woocommerce_email_footer_text', 'essone_custom_email_footer_text', 10, 1 );
+function essone_custom_email_footer_text( $get_option ){
+         $get_option = bloginfo ('name');
+    return $get_option;
+}

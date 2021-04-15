@@ -4,7 +4,7 @@ Theme URI: http://loja.essystem.com.br/
 Author: Giovane Sedano
 Author URI: https://github.com/giovaness30
 Description: Site de desenvolvimento Essystem
-Version: 1.6.8
+Version: 1.6.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: essone
@@ -35,6 +35,10 @@ body a:hover{
 
 /*------------------------------------------ HEADER
 ---------------------------------------------------------------------------------------------------------*/
+
+.header-class{
+    border-bottom: 1px solid #0000000f;
+}
 
 /* Nome do blog e descrição */
  .blog-title {
@@ -115,7 +119,11 @@ body a:hover{
 
 /* Margin Botão Ver opções */
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
-	margin-bottom:1rem
+	margin-bottom:5px;
+}
+
+.woocommerce form.login, .woocommerce form.register{
+    margin: 0 0 2em 0 !important;
 }
 
 /* Menu Painel do cliente  */
@@ -193,7 +201,8 @@ body a:hover{
 /* Estilo "Ver carrinho" */
 .added_to_cart {
     background-color: #c0f3cc !important;
-    color: #fff !important;
+    color: rgb(3, 3, 3) !important;
+    text-decoration: underline;
     border-width: .02px;
     display: inline-block;
     -webkit-appearance: none;
@@ -201,7 +210,13 @@ body a:hover{
     width: 100%;
     font-size: 12px;
     font-weight: 600;
-    }
+    margin-bottom: 5px;
+}
+
+/* Evita conteudo dos produtos em catalogo sair da div */
+.woocommerce ul.products li.product{
+    overflow: hidden;
+}
 
 /*------------------------------------------ FOOTER
 ---------------------------------------------------------------------------------------------------------*/
