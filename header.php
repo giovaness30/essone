@@ -20,7 +20,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
     <!-- Font-awesome -->
     <script src="https://kit.fontawesome.com/1a75781615.js" crossorigin="anonymous"></script>
 </head>
-    <body <?php body_class(); ?>>
+    <body <?php body_class('body-woocommerce'); ?>>
 
         <header class="header-class col-12 py-2" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
 

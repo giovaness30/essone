@@ -25,7 +25,7 @@ add_shortcode('logo-theme', 'shortcodeLogoTheme');
 // # [cart-ess]
 function functionShortcode()
 {
-    $textContent = '<div id="site-header-cart" class="header-cart-container">' . newstore_woocommerce_header_cart() . '</div>';
+    $textContent = '<div id="site-header-cart" class="header-cart-container m-2">' . newstore_woocommerce_header_cart() . '</div>';
     return $textContent;
 }
 add_shortcode('cart-ess', 'functionShortcode'); 
@@ -39,11 +39,13 @@ function shortcodeUserIcon()
     if ( is_user_logged_in() ) { /*Usuario Logado*/
         $link_conta = esc_url( home_url( '/minha-conta/orders' ) );
         $current_user = wp_get_current_user();
-        echo '<a href="'.$link_conta.'"><i style=""  class="fa fa-user-circle" aria-hidden="true"></i>&nbsp'. $current_user->user_firstname .'</a>';
+        echo '<a href="'.$link_conta.'" class="m-2"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp'. $current_user->user_firstname .'</a>';
         }
     else {/*Usuario Deslogado*/
         $link_entrar = esc_url( home_url( '/minha-conta/' ) );
-        echo '<a href="'.$link_entrar.'"><img src="https://img.icons8.com/carbon-copy/30/000000/enter-2.png">' . $text_painel_login . '</a>';
+        if( $text_painel_login !== ''){
+            echo '<a href="'.$link_entrar.'"><img src="https://img.icons8.com/carbon-copy/30/000000/enter-2.png"><button class="btn btn-outline-success btn-sm m-2">' . $text_painel_login . '</button></a>';
+            }
         }
                     
 }
@@ -59,7 +61,7 @@ function shortcodeWhatsapp()
     '
     <div class="whatsappheader text-center d-flex py-1">
 
-        <a style="" href="http://api.whatsapp.com/send?phone=+55' . $contact_number_whatss . '&text=' . $contact_text_whatss . '" target="_blank"><img src="https://img.icons8.com/carbon-copy/30/000000/whatsapp.png"/>Whatsapp</a>
+        <a style="" href="http://api.whatsapp.com/send?phone=+55' . $contact_number_whatss . '&text=' . $contact_text_whatss . '" target="_blank"><img src="https://img.icons8.com/color/25/000000/whatsapp--v6.png"/>Whatsapp</a>
 
     </div>
     ';

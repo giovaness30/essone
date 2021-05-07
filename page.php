@@ -4,7 +4,7 @@
 		<?php dynamic_sidebar( 'slide_sidebar' ); ?>
 	<?php endif; ?>
 </div>
-<div class="album pt-3">
+<div class="div-conteudo album pt-3">
 
 	<div class="container">
 		<div class="row">

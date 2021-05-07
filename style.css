@@ -22,16 +22,13 @@ body{
     min-height: 100%;
 }
 body a{
-	color:#000;
+	/* color:#000; */
 	text-decoration: none;
 }
+.div-conteudo a{
+    color: #000;
+}
 
-body a:link{
-	color:#000
-}
-body a:hover{
-	color:#000;
-}
 
 /*------------------------------------------ HEADER
 ---------------------------------------------------------------------------------------------------------*/
@@ -223,10 +220,10 @@ body a:hover{
 
 .blog-footer {
   padding: 2.5rem 0;
-  color: #999;
   text-align: center;
-  background-color: #f4f4f4d4;
-  border-top: .05rem solid #e5e5e5;
+  /* background-color: #f4f4f4d4; */
+  /* border-top: .05rem solid #e5e5e5; */
+  border-top: 1px solid #0000000f;
   margin-top: auto;
 }
 

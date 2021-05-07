@@ -43,6 +43,11 @@ function cd_customizer_settings( $wp_customize ) {
         'description'=> 'This is panel Description',
         'priority'   => 40,
     ));
+    $wp_customize->add_panel('woo_colors',array(
+        'title'=>'Cores',
+        'description'=> 'This is panel Description',
+        'priority'   => 30,
+    ));
 
     /* -------------------Seções do Personalizar
     ---------------------------------------------------------------- */
@@ -119,6 +124,37 @@ function cd_customizer_settings( $wp_customize ) {
         'panel'=>'woo_panel',
     )); 
 
+    /* Seções do panel CORES */
+    $wp_customize->add_section( 'header_section_colors', array(
+
+        'title'    => __('Cabeçalho'),
+        'description' => 'Alterações no Tema',
+        'priority' => 40,
+        'panel'=>'woo_colors',
+    )); 
+
+    $wp_customize->add_section( 'body_section_colors', array(
+
+        'title'    => __('Corpo do Site'),
+        'description' => 'Alterações no Tema',
+        'priority' => 40,
+        'panel'=>'woo_colors',
+    )); 
+    $wp_customize->add_section( 'widgets_rodape_section_colors', array(
+
+        'title'    => __('Widgets Rodapé'),
+        'description' => 'Alterações no Tema',
+        'priority' => 40,
+        'panel'=>'woo_colors',
+    )); 
+    $wp_customize->add_section( 'rodape_section_colors', array(
+
+        'title'    => __('Rodapé'),
+        'description' => 'Alterações no Tema',
+        'priority' => 40,
+        'panel'=>'woo_colors',
+    )); 
+
     /* -------------------Cores
     ---------------------------------------------------------------- */
 
@@ -130,7 +166,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_color', array(
         'label'        => 'Cor de Fundo Cabeçalho',
-        'section'    => 'gs_colors',
+        'section'    => 'header_section_colors',
         'settings'   => 'header_color',
     ) ) );
 
@@ -142,7 +178,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_text_color', array(
         'label'        => 'Cor dos Texto Cabeçalho',
-        'section'    => 'gs_colors',
+        'section'    => 'header_section_colors',
         'settings'   => 'header_text_color',
     ) ) );
 
@@ -154,7 +190,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'background_color', array(
         'label'        => 'Cor de Fundo',
-        'section'    => 'gs_colors',
+        'section'    => 'body_section_colors',
         'settings'   => 'background_color',
     ) ) );
 
@@ -166,7 +202,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_text_color', array(
         'label'        => 'Cor de texto Primaria',
-        'section'    => 'gs_colors',
+        'section'    => 'body_section_colors',
         'settings'   => 'primary_text_color',
     ) ) );
 
@@ -178,7 +214,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_color', array(
         'label'        => 'Cor Primária',
-        'section'    => 'gs_colors',
+        'section'    => 'body_section_colors',
         'settings'   => 'primary_color',
     ) ) );
 
@@ -189,8 +225,8 @@ function cd_customizer_settings( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_color_hover', array(
-        'label'        => 'Cor hover Primária',
-        'section'    => 'gs_colors',
+        'label'        => 'Cor Primária (ao passar cursor)',
+        'section'    => 'body_section_colors',
         'settings'   => 'primary_color_hover',
     ) ) );
 
@@ -198,14 +234,13 @@ function cd_customizer_settings( $wp_customize ) {
     $wp_customize->add_setting('footer_widget_bg', array(
         'default'		=> '#dddddd',
         'transport'   => 'postMessage',
-
     ));	
 
     $wp_customize->add_control( new WP_Customize_Color_Control(
         $wp_customize,'footer_widget_bg', array(
             'settings'  => 'footer_widget_bg',
             'label'    => 'Cor do Fundo Area Widgets',
-            'section'  => 'gs_colors',		
+            'section'  => 'widgets_rodape_section_colors',		
         )));
 
     /* Cor Texto widget*/
@@ -216,8 +251,32 @@ function cd_customizer_settings( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_widget_color', array(
         'label'        => 'Cor do texto Widget',
-        'section'    => 'gs_colors',
+        'section'    => 'widgets_rodape_section_colors',
         'settings'   => 'essone_widget_color',
+    ) ) );
+
+    /* Cor Fundo Rodapé*/
+    $wp_customize->add_setting( 'essone_background_color_footer' , array(
+        'default'     => '#e8e8e8',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_background_color_footer', array(
+        'label'        => 'Cor do Fundo Rodapé',
+        'section'    => 'rodape_section_colors',
+        'settings'   => 'essone_background_color_footer',
+    ) ) );
+
+    /* Cor texto Rodapé*/
+    $wp_customize->add_setting( 'essone_text_color_footer' , array(
+        'default'     => '#999',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_text_color_footer', array(
+        'label'        => 'Cor do texto Rodapé',
+        'section'    => 'rodape_section_colors',
+        'settings'   => 'essone_text_color_footer',
     ) ) );
 
     /* -------------------Fundos
@@ -555,7 +614,7 @@ function cd_customizer_settings( $wp_customize ) {
     /* Texto do painel Usuarios */
 
     $wp_customize->add_setting('text_painel_login', array(
-    'default'		=> 'login',
+    'default'		=> 'Entrar',
 
     ));	
 

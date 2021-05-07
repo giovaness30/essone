@@ -1,5 +1,13 @@
 <?php
 
+/* Limite de Un por lote envio API-Rest */
+function to_large_api_variations( $limit ) {
+  $limit = 400;
+
+  return $limit;
+}
+add_filter( 'woocommerce_rest_batch_items_limit', 'to_large_api_variations' );
+
 //Title site
 function essone_title_tag(){
   add_theme_support('title-tag');
@@ -70,7 +78,7 @@ function esquerdo_header_sidebar() {
    array (
        'name' => __( 'Espaço lado esquerdo do Cabeçalho', 'essone'),
        'id' => 'left_header_sidebar',
-       'description' => __( 'Utilizado quando o logo do site esta desabilitado em "Personalizar Tema".[logo-theme] = Mostra o logo', 'essone' ),
+       'description' => __( 'Utilizado quando o logo do site esta desabilitado em "Personalizar Tema" [logo-theme] = Mostra o logo', 'essone' ),
        'before_widget' => '',
        'after_widget' => '',
        'before_title' => '',
@@ -102,7 +110,7 @@ function right_header_sidebar() {
    array (
        'name' => __( 'Espaço Direito do Cabeçalho', 'essone'),
        'id' => 'right_header_sidebar',
-       'description' => __( 'Right Header essone theme shotcodes = [cart-ess][user-icon][whats-icon]', 'essone' ),
+       'description' => __( 'Shortcodes geralmente usados = [user-icon][whats-icon][cart-ess]', 'essone' ),
        'before_widget' => '<div class="py-3 pl-2">',
        'after_widget' => '</div>',
        'before_title' => '<span class="hidden">',

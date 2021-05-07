@@ -86,7 +86,7 @@ if ( ! function_exists( 'newstore_woocommerce_header_cart' ) ) {
             );
           ?>
           <div class="header-cart-top-left"><?php echo esc_html($item_count_text); ?></div>
-          <div class="header-cart-top-right"><a class="header-cart-top-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><u><?php esc_html_e( 'Carrinho', 'newstore' ); ?></u></a></div>
+          <div class="header-cart-top-right"><a class="header-cart-top-link" style="color:#000;" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><u><?php esc_html_e( 'Carrinho', 'newstore' ); ?></u></a></div>
           </div>
           <div class="header-cart-products">
             <?php 
