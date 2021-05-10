@@ -48,6 +48,7 @@ function essone_add_woocommerce_support() {
 // Habilita Menus
 function register_essone_menu () {
   register_nav_menu ('header-menu', __ ('Menu Cabeçalho'));
+  register_nav_menu ('header-menu2', __ ('Menu Páginas'));
 }
 
 add_action ('init', 'register_essone_menu');

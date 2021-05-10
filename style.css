@@ -231,6 +231,10 @@ body a{
 margin-bottom: 0;
 }
 
+.footer-widget .widget-content{
+	margin-bottom:1em
+}
+
 /*------------------------------------------ MEDIA (ALTERAÇÔES PARA LAYOUTs MOBILE)
 ---------------------------------------------------------------------------------------------------------*/
 
