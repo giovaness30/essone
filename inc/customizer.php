@@ -39,7 +39,7 @@ function cd_customizer_settings( $wp_customize ) {
     ---------------------------------------------------------------- */
 
     $wp_customize->add_panel('woo_panel',array(
-        'title'=>'Custom Woocommerce',
+        'title'=>'Opções Tema Essystem',
         'description'=> 'This is panel Description',
         'priority'   => 40,
     ));
@@ -344,6 +344,20 @@ function cd_customizer_settings( $wp_customize ) {
           'hide' => 'Esconder',
         ),
       ) );
+
+    // Habilita Cabeçalho Fixo no Topo
+    $wp_customize->add_setting( 'essone_fixed_header' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_fixed_header', array(
+        'label' => 'Mantem Cabeçalho Fixo no topo da tela ao Rolar página.',
+        'section' => 'header',
+        'settings' => 'essone_fixed_header',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
 
     /* Imagem do logo login wordpress */
     $wp_customize->add_setting('login_img_wp', array(

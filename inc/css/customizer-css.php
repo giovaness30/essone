@@ -147,16 +147,21 @@ function cd_customizer_css()
 
             <?php endif ?>
 
-            /* Retira link loja do painel */
-            #wp-admin-bar-view-store{
-                display: none;
-            }
-
             /* Estilo da barra lateral */
             <?php if (get_theme_mod('essone_pag_layout_style')  == '1'):?>
             .widget-left{
                 border-right: 1px solid #d6d6d6;
                 padding: 20px;
+            }
+            <?php endif ?>
+
+            /* Header Fixo */
+            <?php if (get_theme_mod('essone_fixed_header')  == '1'):?>
+            
+            .header-class{
+                position: sticky!important;
+                top: 0!important;
+                z-index: 1020!important;
             }
             <?php endif ?>
 
