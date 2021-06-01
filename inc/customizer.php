@@ -63,7 +63,7 @@ function cd_customizer_settings( $wp_customize ) {
 
 	$wp_customize->add_section( 'top_section', array(
 
-        'title'    => __('Contatos', 'essystemstart2'),
+        'title'    => __('Contatos e Informações', 'essystemstart2'),
         'description' => '',
         'priority' => 35,
     ));	
@@ -311,6 +311,37 @@ function cd_customizer_settings( $wp_customize ) {
     /* -------------------Wocoommerce
     ---------------------------------------------------------------- */
 
+
+    // ---------- Cabeçalho
+
+    // Habilita Cabeçalho Fixo no Topo
+    $wp_customize->add_setting( 'essone_fixed_header' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_fixed_header', array(
+        'label' => 'Mantem Cabeçalho Fixo no topo da tela ao Rolar página.',
+        'section' => 'header',
+        'settings' => 'essone_fixed_header',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    /* Tamanho Logo  */
+    $wp_customize->add_setting( 'essone_size_logo' , array(
+        'default'     => 230,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_size_logo', array(
+        'label'	=>  'Tamanho do Logo',
+        'min' => 100,
+        'max' => 500,
+        'step' => 1,
+        'section' => 'header',
+    ) ) );
+
     // Habilita ou não Logo Cabeçalho
     $wp_customize->add_setting( 'logo_header' , array(
         'default'     => 'show',
@@ -345,19 +376,24 @@ function cd_customizer_settings( $wp_customize ) {
         ),
       ) );
 
-    // Habilita Cabeçalho Fixo no Topo
-    $wp_customize->add_setting( 'essone_fixed_header' , array(
-        'default'     => '',
+    // Estilo do Carrinho
+    $wp_customize->add_setting( 'essone_cart_style' , array(
+        'default'     => 'full',
         'transport'   => 'refresh',
     ) );
 
-    $wp_customize->add_control( 'essone_fixed_header', array(
-        'label' => 'Mantem Cabeçalho Fixo no topo da tela ao Rolar página.',
+    $wp_customize->add_control( 'essone_cart_style', array(
+        'label' => 'Estilo Icone do Carrinho',
         'section' => 'header',
-        'settings' => 'essone_fixed_header',
-        'type' => 'checkbox',
-        'std'  => '0'
-        ) );
+        'settings' => 'essone_cart_style',
+        'type' => 'radio',
+        'choices' => array(
+          'full' => 'Icone Carrinho Completo',
+          'basic' => 'Icone Carrinho sem Total',
+        ),
+      ) );
+
+    // ---------- Wordpress
 
     /* Imagem do logo login wordpress */
     $wp_customize->add_setting('login_img_wp', array(
@@ -384,6 +420,8 @@ function cd_customizer_settings( $wp_customize ) {
         'section'   => 'painel_wp_section',
         'settings'  => 'style_wp_painel',
     ));
+
+    // ---------- Página do Produto
 
     /* Altura da imagem pagina do produto */
 	$wp_customize->add_setting( 'alt_img_single');
@@ -422,6 +460,8 @@ function cd_customizer_settings( $wp_customize ) {
       'description' => 'Quando sem conteudo = 23rem',
     )
     );
+
+    // ---------- Catalogo de Produtos
     
     /* Altera padrão da div de cada produto no Catálogo */
       $wp_customize->add_setting( 'alt_prod_catalog');
@@ -480,8 +520,38 @@ function cd_customizer_settings( $wp_customize ) {
         'section' => 'prod_section_catalog',
     ) ) );
 
+    /* Tamanho Fonte titulo dos itens */
+    $wp_customize->add_setting( 'essone_font_title_prod' , array(
+        'default'     => 12,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_title_prod', array(
+        'label'	=>  'Tamanho Fonte dos Produtos "pt"',
+        'min' => 6,
+        'max' => 25,
+        'step' => 1,
+        'section' => 'prod_section_catalog',
+    ) ) );
+
+    // Estilo dos widgets lateral
+    $wp_customize->add_setting( 'essone_button_fixed' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_button_fixed', array(
+        'label' => 'Fixar botão "Compar" .',
+        'section' => 'prod_section_catalog',
+        'settings' => 'essone_button_fixed',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    // ---------- Chekout
+
     /* Descrição Da Informação adicional */
-    $wp_customize->add_setting( 'note_order');
+    $wp_customize->add_setting( 'note_order' );
 
     $wp_customize->add_control('note_order', array(
     'type'      => 'text',
@@ -494,7 +564,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     // Habilita ou não Politica de compra
     $wp_customize->add_setting( 'politywoo' , array(
-        'default'     => 'hide',
+        'default'     => 'show',
         'transport'   => 'refresh',
     ) );
 
@@ -510,7 +580,7 @@ function cd_customizer_settings( $wp_customize ) {
         ),
         ) );
 
-        /***** LAYOUT *****/
+    // ---------- Estilo da Página
 
         // Layout pagina
         $wp_customize->add_setting( 'essone_pag_layout' , array(
@@ -562,16 +632,46 @@ function cd_customizer_settings( $wp_customize ) {
     /* -------------------Outros
     ---------------------------------------------------------------- */
 
+  /* Nome Empresa */
+  $wp_customize->add_setting('essone_name_shop', array(
+	'default'		=> 'Empresa ME',
+
+  ));
+
+	$wp_customize->add_control( 'essone_name_shop', array(
+        'type'     => 'text',
+        'settings'  => 'essone_name_shop',
+        'label'    => __( 'Texto da conversa inicial', 'essystemstart2' ),
+        'section'  => 'top_section',
+        'priority' => 1,
+		'description' => __( 'Nome Completo da Empresa' ),		
+    ));
+
+  /* CNPJ */
+  $wp_customize->add_setting('essone_cnpj_shop', array(
+	'default'		=> '99.999.999/00001-99',
+
+  ));
+
+	$wp_customize->add_control( 'essone_cnpj_shop', array(
+        'type'     => 'text',
+        'settings'  => 'essone_cnpj_shop',
+        'label'    => __( 'Texto da conversa inicial', 'essystemstart2' ),
+        'section'  => 'top_section',
+        'priority' => 1,
+		'description' => __( 'CNPJ da Empresa' ),		
+    ));
+
 	/* TELEFONE */
-	$wp_customize->add_setting('contact_top', array(
+	$wp_customize->add_setting('essone_contat_phone', array(
 	'default'		=> '(DDD) 9-9999-9999',
 
 	));
 
-	$wp_customize->add_control( 'topbar', array(
+	$wp_customize->add_control( 'essone_contat_phone', array(
 
         'type'     => 'text',
-        'settings'  => 'contact_top',
+        'settings'  => 'essone_contat_phone',
         'label'    => __( 'Numero de Telefone', 'essystemstart2' ),
         'section'  => 'top_section',	
         'priority' => 1,
@@ -581,18 +681,18 @@ function cd_customizer_settings( $wp_customize ) {
 
 
 	/* EMAIL */
-	$wp_customize->add_setting('contact_top_email', array(
-	'default'		=> sanitize_email('email@i-create.com'),
+	$wp_customize->add_setting('essone_contat_email', array(
+	'default'		=> sanitize_email('email@email.com'),
 
 	));
 
-	$wp_customize->add_control( 'topbar_email', array(
+	$wp_customize->add_control( 'essone_contat_email', array(
         'type'     => 'text',
-        'settings'  => 'contact_top_email',
+        'settings'  => 'essone_contat_email',
         'label'    => __( 'Email Address', 'essystemstart2' ),
         'section'  => 'top_section',
         'priority' => 1,
-		'description' => __( 'Email Id that appears on top bar.', 'essystemstart2' ),		
+		'description' => __( 'Email para contato', 'essystemstart2' ),		
     ));
 
 	/* WHATSAPP */
@@ -624,6 +724,24 @@ function cd_customizer_settings( $wp_customize ) {
         'priority' => 1,
 		'description' => __( 'Texto padrão que aparece no campo da conversa Whatsapp', 'essystemstart2' ),		
     ));
+
+    /* Mini Mapa */
+
+    $wp_customize->add_setting('essone_mini_map', array(
+        'default'		=> '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.0260815083025!2d-47.33873958449034!3d-22.76441333853057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89971327a6129%3A0xfb614cdaa6bbe913!2sR.%20dos%20L%C3%ADrios%2C%20989%20-%20Cidade%20Jardim%2C%20Americana%20-%20SP%2C%2013467-160!5e0!3m2!1spt-BR!2sbr!4v1622512217132!5m2!1spt-BR!2sbr" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
+    
+        ));	
+    
+        $wp_customize->add_control( 'essone_mini_map', array(
+              'type'     => 'textarea',
+              'settings'  => 'essone_mini_map',
+              'label'    => __( 'Iframe com Mini Mapa', 'essystemstart2' ),
+              'section'  => 'top_section',
+              'priority' => 1,
+          'description' => __( 'Mapa do Google' ),		
+          ));
+
+
 
     /* Texto do painel Usuarios */
 

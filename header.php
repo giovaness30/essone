@@ -22,9 +22,10 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 </head>
     <body <?php body_class('body-woocommerce'); ?>>
 
-        <header class="header-class col-12 py-2" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
+        <header class="header-class" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
 
         <?php if (get_theme_mod('three_header','show') == 'show') : ?><!-- Pergunta se está habilitado 3 colunas no Personalizar tema -->
+        <div class="container">
             <div class="row  mx-lg-3">
 
                 <!-- widget esquerdo header -->
@@ -82,12 +83,22 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 
             </div>
         <?php endif?>
+        </div>
+
+        <div id="menuprincipal" class="justify-content-center">
+		
+        <?php if(is_home() || is_front_page() || is_product() || is_product_category() && is_active_sidebar( 'menu_principal_sidebar' )){
+            dynamic_sidebar( 'menu_principal_sidebar' );
+        } 
+        ?> 
+
+        </div>
 
         </header>
         
-        <div id="menuprincipal" class="justify-content-center">
+        <div id="firstbody" class="justify-content-center">
 		
-            <?php if(is_home() || is_front_page() || is_product() && is_active_sidebar( 'firt_body_sidebar' )){
+            <?php if(is_home() || is_front_page() && is_active_sidebar( 'firt_body_sidebar' )){
 
                 dynamic_sidebar( 'firt_body_sidebar' );
             } 

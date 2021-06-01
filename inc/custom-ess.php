@@ -44,7 +44,7 @@ function shortcodeUserIcon()
     else {/*Usuario Deslogado*/
         $link_entrar = esc_url( home_url( '/minha-conta/' ) );
         if( $text_painel_login !== ''){
-            echo '<a href="'.$link_entrar.'"><img src="https://img.icons8.com/carbon-copy/30/000000/enter-2.png"><button class="btn btn-outline-success btn-sm m-2">' . $text_painel_login . '</button></a>';
+            echo '<a href="'.$link_entrar.'"><button class="btn btn-outline-success btn-sm m-2">' . $text_painel_login . '</button></a>';
             }
         }
                     
@@ -68,6 +68,47 @@ function shortcodeWhatsapp()
                     
 }
 add_shortcode('whats-icon', 'shortcodeWhatsapp'); 
+
+// # [end-loja]
+function shortcodeEndLoja()
+{
+    $contact_number_whatss = esc_attr(get_theme_mod('contact_number_whatss', '19984259600'));
+    $contact_text_whatss = esc_attr(get_theme_mod('contact_text_whatss', 'Olá, Tenho uma duvida.'));
+    echo 
+    '
+    <div class=" d-flex py-1">
+    <h4>Nossa Loja Física</h4>
+    
+    </div>
+    <p>'. get_theme_mod('essone_name_shop', 'Empresa ME') .' - '. get_theme_mod('essone_cnpj_shop', '99.999.999/00001-99') .'</p>
+    <p>'.get_option( 'woocommerce_store_address' ). ' - ' . get_option( 'woocommerce_store_address_2' ). ' , ' .  get_option( 'woocommerce_store_city' ) . ' CEP: ' .  get_option( 'woocommerce_store_postcode' ) .'</p>
+    <div class="">
+    '. get_theme_mod('essone_mini_map') .'
+        </div>
+    ';
+                    
+}
+add_shortcode('end-loja', 'shortcodeEndLoja'); 
+
+// # [contato-loja]
+function shortcodeContatoLoja()
+{
+
+    echo 
+    '
+    <div class=" d-flex py-1">
+    <h4>Contatos:</h4>
+    
+    </div>
+    <p>Telefone: '. get_theme_mod('essone_contat_phone', '(dd) nnnnn-nnnn') .'</p>
+    <p>E-mail: '. get_theme_mod('essone_contat_email', 'email@email.com') .'</p>
+    <div class="">
+    
+        </div>
+    ';
+                    
+}
+add_shortcode('contato-loja', 'shortcodeContatoLoja'); 
 
 
 

@@ -137,6 +137,22 @@ function header_center_sidebar() {
  }
 add_action( 'widgets_init', 'header_center_sidebar' );
 
+//widget Menu Principal
+function menu_principal_sidebar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Menu Principal', 'essone'),
+       'id' => 'menu_principal_sidebar',
+       'description' => __( 'Espaço Utilizado para Menus e MegaMenu', 'essone' ),
+       'before_widget' => '<div class="widget-content" style="">',
+       'after_widget' => "</div>",
+       'before_title' => '<h3 class="widget-title">',
+       'after_title' => '</h3>',
+   )
+  );
+ }
+add_action( 'widgets_init', 'menu_principal_sidebar' );
+
 //widget Primeiro Widget do corpo so site
 function firt_body_sidebar() {
   register_sidebar(
@@ -426,4 +442,14 @@ add_action( 'woocommerce_email_footer_text', 'essone_custom_email_footer_text', 
 function essone_custom_email_footer_text( $get_option ){
          $get_option = bloginfo ('name');
     return $get_option;
+}
+
+// Altera Leia Mais dos produtos sem estoque
+add_filter( 'gettext', 'ds_change_readmore_text', 20, 3 );
+
+function ds_change_readmore_text( $translated_text, $text, $domain ) {
+if ( ! is_admin() && $domain === 'woocommerce' && $translated_text === 'Leia mais') {
+$translated_text = 'Ver mais';
+}
+return $translated_text;
 }

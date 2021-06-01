@@ -15,7 +15,8 @@ if(urlSite.indexOf('finalizar-compra') != -1){
     document.querySelector('.woocommerce-billing-fields').classList.add('container');
 
     var h3Title = document.querySelector('.woocommerce-billing-fields h3');
-    h3Title.style.display = "none";
+    // h3Title.style.display = "none";
+    h3Title.innerText = 'Informações para Entrega';
 
     // Correção dos compos de checkout com Brazilian market.
     document.querySelector('.woocommerce-billing-fields__field-wrapper').classList.add('row');

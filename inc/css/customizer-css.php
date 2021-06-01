@@ -89,8 +89,8 @@ function cd_customizer_css()
 
             /* Widgets Footer */
             .footer-widget{ 
-                background-color:<?php echo get_theme_mod('footer_widget_bg'); ?>;
-                color:<?php echo get_theme_mod('essone_widget_color'); ?>;
+                background-color:<?php echo get_theme_mod('footer_widget_bg', '#dddddd'); ?>;
+                color:<?php echo get_theme_mod('essone_widget_color', '#000000'); ?>;
             }
 
             .widget-right a{color: <?php echo get_theme_mod('color_text_header_content'); ?>;
@@ -136,8 +136,27 @@ function cd_customizer_css()
                     transform:scale(1.02);
 
                 }
-
             <?php endif ?>
+
+            /* Fixar botão comprar */
+            <?php if (get_theme_mod('essone_button_fixed','show') == 'show') : ?>
+            .woocommerce ul.products li.product .button {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translate( -50%);
+            }
+            .woocommerce ul.products li.product .button:hover{
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translate( -50%);
+            }
+            <?php endif ?>
+
+            .woocommerce ul.products li.product .woocommerce-loop-product__title{
+                font-size: <?php echo get_theme_mod('essone_font_title_prod');?>pt !important;
+            }
 
             /* Politica woocommerce */
             <?php if (get_theme_mod('politywoo','show') == 'hide') : ?>
@@ -165,6 +184,16 @@ function cd_customizer_css()
             }
             <?php endif ?>
 
+            /* Estilo Carrinho */
+            <?php if (get_theme_mod('essone_cart_style','full') == 'basic') : ?>
+                .header-cart-top-link-right{
+                    display: none;
+                }
+            <?php endif ?>
+
+            .logo-header {
+                width: <?php echo get_theme_mod('essone_size_logo');?>px ;
+            }
             td #header_wrapper{
                 background-color: #000 !important;
             }
@@ -172,3 +201,5 @@ function cd_customizer_css()
          </style>
     <?php
 }
+
+
