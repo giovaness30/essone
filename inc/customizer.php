@@ -182,9 +182,21 @@ function cd_customizer_settings( $wp_customize ) {
         'settings'   => 'header_text_color',
     ) ) );
 
+    /* Cor Hover Texto Cabeçalho */
+    $wp_customize->add_setting( 'header_text_color_hover' , array(
+        'default'     => '#1e73be',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_text_color_hover', array(
+        'label'        => 'Cor dos Texto Cabeçalho (Ao passar Mouse)',
+        'section'    => 'header_section_colors',
+        'settings'   => 'header_text_color_hover',
+    ) ) );
+
     /* Cor Fundo */
     $wp_customize->add_setting( 'background_color' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#f7f7f7',
         'transport'   => 'postMessage',
     ) );
 
@@ -513,7 +525,7 @@ function cd_customizer_settings( $wp_customize ) {
     ) );
     
     $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_letter_title_prod', array(
-        'label'	=>  'Tamanho do Titulo dos Produtos',
+        'label'	=>  'Quantidade de Caracteres Titulo dos Produtos',
         'min' => 1,
         'max' => 35,
         'step' => 1,
@@ -533,6 +545,21 @@ function cd_customizer_settings( $wp_customize ) {
         'step' => 1,
         'section' => 'prod_section_catalog',
     ) ) );
+
+    /* Tamanho Fonte ShortDescription dos itens */
+    $wp_customize->add_setting( 'essone_font_description_catalog' , array(
+        'default'     => 12,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_description_catalog', array(
+        'label'	=>  'Tamanho Fonte Descrição dos Produtos. "pt"',
+        'min' => 6,
+        'max' => 25,
+        'step' => 1,
+        'section' => 'prod_section_catalog',
+    ) ) );
+
 
     // Estilo dos widgets lateral
     $wp_customize->add_setting( 'essone_button_fixed' , array(
