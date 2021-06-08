@@ -39,7 +39,8 @@ function cd_customizer_css()
             /* Tema */
             .header-class{ background-color:<?php echo get_theme_mod('header_color'); ?>;}
 
-            .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color'); ?>;}
+            .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color', '#000000'); ?>;}
+            .header-class a:hover, .text-muted{ color:<?php echo get_theme_mod('header_text_color_hover', '#1e73be'); ?>;}
 
             .cart-link-contents{
                 color:<?php echo get_theme_mod('header_text_color'); ?> !important;
@@ -156,6 +157,9 @@ function cd_customizer_css()
 
             .woocommerce ul.products li.product .woocommerce-loop-product__title{
                 font-size: <?php echo get_theme_mod('essone_font_title_prod');?>pt !important;
+            }
+            .description-catalog{
+                font-size:<?php echo get_theme_mod('essone_font_description_catalog', '12');?>pt !important;
             }
 
             /* Politica woocommerce */
