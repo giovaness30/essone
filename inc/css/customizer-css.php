@@ -49,13 +49,13 @@ function cd_customizer_css()
                 color:<?php echo get_theme_mod('primary_color_hover'); ?>
             }
             .body-woocommerce{
-                background-color:#<?php echo get_theme_mod('background_color'); ?>;
+                background-color:#<?php echo get_theme_mod('background_color', '#f7f7f7'); ?>;
             }
             
             .body { background-color:#<?php echo get_theme_mod('background_color'); ?>;}
 
             .woocommerce button.button.alt, .woocommerce ul.products li.product .button{
-            color:<?php echo get_theme_mod('primary_text_color'); ?>;}
+            color:<?php echo get_theme_mod('primary_text_color', '#ffffff'); ?>;}
 
             .woocommerce button.button.alt, .woocommerce ul.products li.product .button{
             background-color:<?php echo get_theme_mod('primary_color'); ?>;}

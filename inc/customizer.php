@@ -184,7 +184,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Cor Fundo */
     $wp_customize->add_setting( 'background_color' , array(
-        'default'     => '#43C6E4',
+        'default'     => '#f7f7f7',
         'transport'   => 'postMessage',
     ) );
 

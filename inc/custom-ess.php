@@ -83,7 +83,7 @@ function shortcodeEndLoja()
     <p>'. get_theme_mod('essone_name_shop', 'Empresa ME') .' - '. get_theme_mod('essone_cnpj_shop', '99.999.999/00001-99') .'</p>
     <p>'.get_option( 'woocommerce_store_address' ). ' - ' . get_option( 'woocommerce_store_address_2' ). ' , ' .  get_option( 'woocommerce_store_city' ) . ' CEP: ' .  get_option( 'woocommerce_store_postcode' ) .'</p>
     <div class="">
-    '. get_theme_mod('essone_mini_map') .'
+    '. get_theme_mod('essone_mini_map', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.0260815083025!2d-47.33873958449034!3d-22.76441333853057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c89971327a6129%3A0xfb614cdaa6bbe913!2sR.%20dos%20L%C3%ADrios%2C%20989%20-%20Cidade%20Jardim%2C%20Americana%20-%20SP%2C%2013467-160!5e0!3m2!1spt-BR!2sbr!4v1622512217132!5m2!1spt-BR!2sbr" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>') .'
         </div>
     ';
                     
