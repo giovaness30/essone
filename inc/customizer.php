@@ -520,7 +520,7 @@ function cd_customizer_settings( $wp_customize ) {
 
     /* Tamanho Titulo Produtos Catalogo de produtos */
     $wp_customize->add_setting( 'essone_letter_title_prod' , array(
-        'default'     => 12,
+        'default'     => 20,
         'transport'   => 'refresh',
     ) );
     

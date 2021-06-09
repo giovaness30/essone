@@ -196,7 +196,7 @@ body a{
 .added_to_cart {
     background-color: #c0f3cc !important;
     color: rgb(3, 3, 3) !important;
-    text-decoration: underline;
+    text-decoration: underline; 
     border-width: .02px;
     display: inline-block;
     -webkit-appearance: none;
@@ -210,6 +210,10 @@ body a{
 /* Evita conteudo dos produtos em catalogo sair da div */
 .woocommerce ul.products li.product{
     overflow: hidden;
+}
+
+.description-catalog{
+    padding-bottom: 3em;
 }
 
 /*------------------------------------------ FOOTER
