@@ -72,12 +72,59 @@ function essone_woocommerce_product_get_rating_html($html, $rating, $count){
   }
   add_filter( 'woocommerce_product_get_rating_html', 'essone_woocommerce_product_get_rating_html', 10, 3 );
 
+//widget esquerdo top-bar
+function left_top_bar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Barra do Topo - Widget Esquerdo', 'essone'),
+       'id' => 'left_top_bar',
+       'description' => __( 'Shortcodes = [topbar-horario] ,  | Sem Conteúdo, a barra não aparecerá.', 'essone' ),
+       'before_widget' => '',
+       'after_widget' => '',
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+ add_action( 'widgets_init', 'left_top_bar' );
+
+//widget central top-bar
+function center_top_bar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Barra do Topo - Widget do meio', 'essone'),
+       'id' => 'center_top_bar',
+       'description' => __( 'Sem Conteúdo, a barra não aparecerá.', 'essone' ),
+       'before_widget' => '',
+       'after_widget' => '',
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+ add_action( 'widgets_init', 'center_top_bar' );
+
+//widget direito top-bar
+ function right_top_bar() {
+  register_sidebar(
+   array (
+       'name' => __( 'Barra do Topo - Widget Direito', 'essone'),
+       'id' => 'right_top_bar',
+       'description' => __( 'Utilizado quando o logo do site esta desabilitado em "Personalizar Tema" [logo-theme] = Mostra o logo', 'essone' ),
+       'before_widget' => '',
+       'after_widget' => '',
+       'before_title' => '',
+       'after_title' => '',
+   )
+  );
+ }
+ add_action( 'widgets_init', 'right_top_bar' );
 
 //widget esquerdo header
 function esquerdo_header_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Espaço lado esquerdo do Cabeçalho', 'essone'),
+       'name' => __( 'Cabeçalho - Widget Esquerdo', 'essone'),
        'id' => 'left_header_sidebar',
        'description' => __( 'Utilizado quando o logo do site esta desabilitado em "Personalizar Tema" [logo-theme] = Mostra o logo', 'essone' ),
        'before_widget' => '',
@@ -93,7 +140,7 @@ function esquerdo_header_sidebar() {
 function center_header_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Espaço Central do Cabeçalho', 'essone'),
+       'name' => __( 'Cabeçalho - Widget Central', 'essone'),
        'id' => 'center_header_sidebar',
        'description' => __( 'Center Header essone theme', 'essone' ),
        'before_widget' => '',
@@ -109,7 +156,7 @@ function center_header_sidebar() {
 function right_header_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Espaço Direito do Cabeçalho', 'essone'),
+       'name' => __( 'Cabeçalho - Widget Direito', 'essone'),
        'id' => 'right_header_sidebar',
        'description' => __( 'Shortcodes geralmente usados = [user-icon][whats-icon][cart-ess]', 'essone' ),
        'before_widget' => '<div class="py-3 pl-2">',
@@ -125,7 +172,7 @@ function right_header_sidebar() {
 function header_center_sidebar() {
   register_sidebar(
    array (
-       'name' => __( 'Cabeçalho central do site', 'essone'),
+       'name' => __( 'Cabeçalho - Widget Abaixo Central', 'essone'),
        'id' => 'header_center_sidebar',
        'description' => __( 'Espaço Geralmente Utilizado para Cetegorias e Pesquisas', 'essone' ),
        'before_widget' => '<div class="widget-content headercenter" style="">',

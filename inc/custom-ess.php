@@ -111,6 +111,16 @@ function shortcodeContatoLoja()
 }
 add_shortcode('contato-loja', 'shortcodeContatoLoja'); 
 
+// # [topbar-horario]
+function shortcodeTopBarHorario()
+{
+
+    echo get_theme_mod('essone_horario_func', 'Seg à Sex = 09hs as 18hs | Sáb = 09hs as 12hs');
+                    
+}
+add_shortcode('topbar-horario', 'shortcodeTopBarHorario'); 
+
+
 
 
 

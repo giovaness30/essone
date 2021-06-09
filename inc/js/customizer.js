@@ -1,5 +1,11 @@
 /* Arquivo para Vvisualização instantane das alterações no "PERSONALIZAR" */
 ( function( $ ) {
+    wp.customize( 'essone_topbar_bg_color', function( value ) {
+        value.bind( function( newval ) {
+            $( '.top-bar' ).css( 'background-color', newval );
+        } );
+    } );
+
 
     wp.customize( 'header_color', function( value ) {
         value.bind( function( newval ) {

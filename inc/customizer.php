@@ -158,6 +158,30 @@ function cd_customizer_settings( $wp_customize ) {
     /* -------------------Cores
     ---------------------------------------------------------------- */
 
+    /* Cor texto Barra Topo */
+    $wp_customize->add_setting( 'essone_topbar_txt_color' , array(
+        'default'     => '#000',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_topbar_txt_color', array(
+        'label'        => 'Cor Texto Barra do Topo',
+        'section'    => 'header_section_colors',
+        'settings'   => 'essone_topbar_txt_color',
+    ) ) );
+
+    /* Cor fundo Barra Topo */
+    $wp_customize->add_setting( 'essone_topbar_bg_color' , array(
+        'default'     => 'rgba(48,48,48,0.39)',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_topbar_bg_color', array(
+        'label'        => 'Cor de Fundo Barra do Topo',
+        'section'    => 'header_section_colors',
+        'settings'   => 'essone_topbar_bg_color',
+    ) ) );
+    
     /* Cor Cabeçalho */
     $wp_customize->add_setting( 'header_color' , array(
         'default'     => '#ffffff',
@@ -405,6 +429,20 @@ function cd_customizer_settings( $wp_customize ) {
         ),
       ) );
 
+    /* Fonte size barra do topo */
+    $wp_customize->add_setting( 'essone_font_txt_topbar' , array(
+        'default'     => 10,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_txt_topbar', array(
+        'label'	=>  'Tamanho Fonte Barra Topo "pt"',
+        'min' => 6,
+        'max' => 25,
+        'step' => 1,
+        'section' => 'header',
+    ) ) );
+
     // ---------- Wordpress
 
     /* Imagem do logo login wordpress */
@@ -561,16 +599,30 @@ function cd_customizer_settings( $wp_customize ) {
     ) ) );
 
 
-    // Estilo dos widgets lateral
+    // Fixar Botão Comprar
     $wp_customize->add_setting( 'essone_button_fixed' , array(
         'default'     => '',
         'transport'   => 'refresh',
     ) );
 
     $wp_customize->add_control( 'essone_button_fixed', array(
-        'label' => 'Fixar botão "Compar" .',
+        'label' => 'Fixar botão "Comprar" .',
         'section' => 'prod_section_catalog',
         'settings' => 'essone_button_fixed',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    // Habilitar Descrição Curta no Catalogo
+    $wp_customize->add_setting( 'essone_description_short' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_description_short', array(
+        'label' => 'Habilitar Descrição Curta no Catálogo" .',
+        'section' => 'prod_section_catalog',
+        'settings' => 'essone_description_short',
         'type' => 'checkbox',
         'std'  => '0'
         ) );
@@ -750,6 +802,21 @@ function cd_customizer_settings( $wp_customize ) {
         'section'  => 'top_section',
         'priority' => 1,
 		'description' => __( 'Texto padrão que aparece no campo da conversa Whatsapp', 'essystemstart2' ),		
+    ));
+
+  /* Horario de funcionamento */
+  $wp_customize->add_setting('essone_horario_func', array(
+	'default'		=> 'Seg à Sex = 09hs as 18hs | Sáb = 09hs as 12hs',
+
+  ));
+
+	$wp_customize->add_control( 'essone_horario_func', array(
+        'type'     => 'text',
+        'settings'  => 'essone_horario_func',
+        'label'    => __( 'Horário de Funcionamento'),
+        'section'  => 'top_section',
+        'priority' => 1,
+		'description' => __( 'Informação aparecera em uma barra no topo do site.', 'essystemstart2' ),		
     ));
 
     /* Mini Mapa */

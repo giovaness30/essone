@@ -36,6 +36,12 @@ function cd_customizer_css()
 
             <?php echo get_theme_mod('style_wp_painel') ?>
 
+            .top-bar{   
+                background-color:<?php echo get_theme_mod('essone_topbar_bg_color'); ?> ; 
+                color:<?php echo get_theme_mod('essone_topbar_txt_color'); ?> ;
+                font-size:<?php echo get_theme_mod('essone_font_txt_topbar', '10'); ?>pt ;
+            }
+
             /* Tema */
             .header-class{ background-color:<?php echo get_theme_mod('header_color'); ?>;}
 
@@ -142,18 +148,22 @@ function cd_customizer_css()
             <?php endif ?>
 
             /* Fixar botão comprar */
-            <?php if (get_theme_mod('essone_button_fixed','show') == 'show') : ?>
+            <?php if (get_theme_mod('essone_button_fixed','0') == '1') : ?>
             .woocommerce ul.products li.product .button {
+                bottom: 3px;
                 position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translate( -50%);
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                width: 6em;
             }
             .woocommerce ul.products li.product .button:hover{
+                bottom: 3px;
                 position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translate( -50%);
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                width: 6em;
             }
             <?php endif ?>
 
@@ -206,6 +216,16 @@ function cd_customizer_css()
 
          </style>
     <?php
+
+    // Descrição produtos
+    if (get_theme_mod('essone_description_short','0') == '1'){
+        add_action('woocommerce_after_shop_loop_item', 'gs_description_catalog', 3);
+        
+        function gs_description_catalog() {
+            echo '<div class="description-catalog">'. get_the_excerpt() .'</div>';
+        };
+
+    }
 }
 
 

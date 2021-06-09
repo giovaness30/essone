@@ -22,6 +22,28 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 </head>
     <body <?php body_class('body-woocommerce'); ?>>
 
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="left-top-bar col-md-4 d-flex justify-content-center">
+                        <?php if ( is_active_sidebar( 'left_top_bar' ) ) : ?>
+                            <?php dynamic_sidebar( 'left_top_bar' ); ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="center-top-bar col-md-4 d-flex justify-content-center">
+                        <?php if ( is_active_sidebar( 'center_top_bar' ) ) : ?>
+                            <?php dynamic_sidebar( 'center_top_bar' ); ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="right-top-bar col-md-4 d-flex justify-content-center">
+                        <?php if ( is_active_sidebar( 'right_top_bar' ) ) : ?>
+                            <?php dynamic_sidebar( 'right_top_bar' ); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <header class="header-class" style="background-image:url('<?php if(get_theme_mod('header_img_bg') !=''){echo $header_img_bg ;}?>');">
 
         <?php if (get_theme_mod('three_header','show') == 'show') : ?><!-- Pergunta se está habilitado 3 colunas no Personalizar tema -->
