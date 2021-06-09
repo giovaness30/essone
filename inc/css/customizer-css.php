@@ -39,12 +39,9 @@ function cd_customizer_css()
             /* Tema */
             .header-class{ background-color:<?php echo get_theme_mod('header_color'); ?>;}
 
-<<<<<<< Updated upstream
             .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color', '#000000'); ?>;}
             .header-class a:hover, .text-muted{ color:<?php echo get_theme_mod('header_text_color_hover', '#1e73be'); ?>;}
-=======
-            .header-class a, .text-muted{ color:<?php echo get_theme_mod('header_text_color'); ?>;}
->>>>>>> Stashed changes
+
 
             .cart-link-contents{
                 color:<?php echo get_theme_mod('header_text_color'); ?> !important;
@@ -54,11 +51,8 @@ function cd_customizer_css()
                 color:<?php echo get_theme_mod('primary_color_hover'); ?>
             }
             .body-woocommerce{
-<<<<<<< Updated upstream
                 background-color:#<?php echo get_theme_mod('background_color', '#f7f7f7'); ?>;
-=======
-                background-color:#<?php echo get_theme_mod('background_color'); ?>;
->>>>>>> Stashed changes
+
             }
             
             .body { background-color:#<?php echo get_theme_mod('background_color'); ?>;}

@@ -44,11 +44,8 @@ function shortcodeUserIcon()
     else {/*Usuario Deslogado*/
         $link_entrar = esc_url( home_url( '/minha-conta/' ) );
         if( $text_painel_login !== ''){
-<<<<<<< Updated upstream
             echo '<a href="'.$link_entrar.'"><button class="btn btn-outline-success btn-sm m-2">' . $text_painel_login . '</button></a>';
-=======
-            echo '<a href="'.$link_entrar.'"><img src="https://img.icons8.com/carbon-copy/30/000000/enter-2.png"><button class="btn btn-outline-success btn-sm m-2">' . $text_painel_login . '</button></a>';
->>>>>>> Stashed changes
+
             }
         }
                     
