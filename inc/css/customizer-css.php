@@ -155,7 +155,7 @@ function cd_customizer_css()
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-                width: 6em;
+                width: 7em;
             }
             .woocommerce ul.products li.product .button:hover{
                 bottom: 3px;
@@ -163,7 +163,7 @@ function cd_customizer_css()
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-                width: 6em;
+                width: 7em;
             }
             <?php endif ?>
 

@@ -199,17 +199,12 @@ body a{
 
 /* Estilo "Ver carrinho" */
 .added_to_cart {
-    /* background-color: #c0f3cc !important; */
-    color: rgb(3, 3, 3) !important;
-    text-decoration: underline; 
-    border-width: .02px;
-    display: inline-block;
-    -webkit-appearance: none;
-    -webkit-font-smoothing: antialiased;
+    background-color: #c0f3cc !important;
+    position: absolute;
     width: 100%;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 5px;
+    top: 13em;
+    left: 0;
+    padding-top: 0!important ;
 }
 
 /* Evita conteudo dos produtos em catalogo sair da div */
@@ -219,6 +214,7 @@ body a{
 
 .description-catalog{
     color: #000;
+    padding-bottom: 3em;
 
 }
 
