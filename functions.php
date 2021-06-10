@@ -254,7 +254,7 @@ function footer1_sidebar() {
    array (
        'name' => __( 'Rodape 1 Esquerdo', 'essone'),
        'id' => 'footer1_sidebar',
-       'description' => __( 'Footer 1 essone theme', 'essone' ),
+       'description' => __( 'Shortcodes = [logo-theme] ,  | Sem Conteúdo, a barra não aparecerá.', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
        'before_title' => '<h4 class="widget-title">',
@@ -270,7 +270,7 @@ function footer2_sidebar() {
    array (
        'name' => __( 'Rodape 2 Centro', 'essone'),
        'id' => 'footer2_sidebar',
-       'description' => __( 'Footer 2 essone theme', 'essone' ),
+       'description' => __( 'Shortcodes = [end-loja] ,  | Sem Conteúdo, a barra não aparecerá.', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
        'before_title' => '<h4 class="widget-title">',
@@ -286,7 +286,7 @@ function footer3_sidebar() {
    array (
        'name' => __( 'Rodape 3 Direito', 'essone'),
        'id' => 'footer3_sidebar',
-       'description' => __( 'Footer 3 essone theme', 'essone' ),
+       'description' => __( 'Shortcodes = [contato-loja] ,  | Sem Conteúdo, a barra não aparecerá.', 'essone' ),
        'before_widget' => '<div class="widget-content">',
        'after_widget' => "</div>",
        'before_title' => '<h4 class="widget-title">',
