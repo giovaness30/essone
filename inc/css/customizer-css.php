@@ -56,6 +56,9 @@ function cd_customizer_css()
             body a:hover{
                 color:<?php echo get_theme_mod('primary_color_hover'); ?>
             }
+            body a{
+                color:<?php echo get_theme_mod('primary_link_color'); ?>
+            }
             .body-woocommerce{
                 background-color:#<?php echo get_theme_mod('background_color', '#f7f7f7'); ?>;
 
@@ -155,7 +158,7 @@ function cd_customizer_css()
                 left: 0;
                 right: 0;
                 margin: 0 auto;
-                width: 7em;
+                width: 7.5em;
             }
             .woocommerce ul.products li.product .button:hover{
                 bottom: 3px;
@@ -166,6 +169,22 @@ function cd_customizer_css()
                 width: 7em;
             }
             <?php endif ?>
+
+            /* Tamanho e cor dos Preços Catalogo */
+            .woocommerce ul.products li.product .price{
+                font-size: <?php echo get_theme_mod('essone_font_price_prod', '12');?>pt !important;
+                color: <?php echo get_theme_mod('essone_color_price_catalog', '#77a464');?> !important;
+            }
+             /* Tamanho e cor dos Preços Pagina do produto */
+            .woocommerce div.product p.price, .woocommerce div.product span.price{
+                font-size: <?php echo get_theme_mod('essone_font_price_prod_pag', '12');?>pt !important;
+                color: <?php echo get_theme_mod('essone_color_price_pag', '#77a464');?> !important;
+            }
+            <?php if (get_theme_mod('essone_bold_price', '0') == '1') : ?>
+                .woocommerce div.product p.price, .woocommerce div.product span.price{
+                    font-weight: bold;
+                }
+            <?php endif ?>  
 
             .woocommerce ul.products li.product .woocommerce-loop-product__title{
                 font-size: <?php echo get_theme_mod('essone_font_title_prod');?>pt !important;
@@ -215,6 +234,9 @@ function cd_customizer_css()
             }
 
          </style>
+
+
+    <!-- Functions ativadas pelo customizer(Aparencia->Personalizar) -->
     <?php
 
     // Descrição produtos
@@ -222,10 +244,27 @@ function cd_customizer_css()
         add_action('woocommerce_after_shop_loop_item', 'gs_description_catalog', 3);
         
         function gs_description_catalog() {
+            if(get_the_excerpt() <> '')
             echo '<div class="description-catalog">'. get_the_excerpt() .'</div>';
         };
 
     }
 }
+
+// Imagens dos produto em grupo
+if (get_theme_mod('essone_thumbnail_grouped','0') == '1'){
+
+    add_action( 'woocommerce_grouped_product_list_before_quantity', 'woocommerce_grouped_product_thumbnail' );
+  
+    function woocommerce_grouped_product_thumbnail( $product ) {
+        $attachment_url = wp_get_attachment_image_src($product->get_image_id(), 'thumbnail', false)[0];
+        ?>
+          <td style="width:100px" class="woocommerce-grouped-product-list-item__image">
+              <img class="grouped-image" src="<?php echo $attachment_url; ?>" />
+          </td>
+        <?php
+    }
+  
+  }
 
 

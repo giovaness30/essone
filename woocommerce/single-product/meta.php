@@ -61,13 +61,11 @@ function add_afiliates_button(){
 }
 add_action('admin_init', 'add_afiliates_button');
 
+global $wp;
+$current_url = home_url(add_query_arg(array(), $wp->request));
+
+if(get_theme_mod('essone_shared_prod_pag') !=''){
+  echo'<br>Compartilhar:<a href="#" class="share ml-2"><img src="https://img.icons8.com/ios-glyphs/25/000000/share--v1.png"/></a><a class="ml-2" href="whatsapp://send?text='. $current_url .'" data-action="share/whatsapp/share"><img src="https://img.icons8.com/plasticine/35/000000/whatsapp.png"/></a>';
+}
 ?>
 
-<script>
-  function copiarTexto() {
-    var textoCopiado = document.getElementById("link");
-    textoCopiado.select();
-    document.execCommand("Copy");
-    alert("Link do: " + textoCopiado.value);
-  }
-</script>

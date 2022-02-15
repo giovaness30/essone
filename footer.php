@@ -20,6 +20,31 @@
             <p class="footerdev">Desenvolvido por <a target="blank" href="https://essystem.com.br">ESSystem Sistemas</a></p>
             
             <a href="#"><img style="width:26px;" src="https://img.icons8.com/metro/26/000000/collapse-arrow.png"/></a>
+
+            <?php if (get_theme_mod('no_default_method','hide') == 'show') : ?>
+                <script>
+                    var urlSite = window.location.pathname;
+                    var qtymethod = document.querySelectorAll(".shipping_method").length;
+                    if(urlSite.indexOf('finalizar-compra') != -1){
+                    for(let i = 0 ; i < qtymethod ; i++){document.querySelectorAll(".shipping_method")[i].checked = false;};
+                    };
+                </script>
+            <?php endif ?>
+            
+            <?php //whatsap flutuante
+                if(get_theme_mod('essone_whats_flut') !=''){
+                    echo'
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+                    <a href="https://wa.me/55'. get_theme_mod('contact_number_whatss', '19984259600') .'?text='. esc_attr(get_theme_mod('contact_text_whatss', 'Olá, Tenho uma duvida.')) .'" style="position:fixed;width:60px;height:60px;bottom:30px;right:30px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+                    z-index:1000;" target="_blank">
+                    <i style="margin-top:16px" class="fa fa-whatsapp"></i>
+                    </a>
+                    ';
+            };
+            ?>
+
+
+
             
         </footer>
 
@@ -49,5 +74,6 @@
 
         <?php wp_footer(); ?>
         <script src="<?php bloginfo ('template_url');?>/inc/js/custom.js"></script>
+
     </body>
 </html>

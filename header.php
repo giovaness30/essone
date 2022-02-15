@@ -19,9 +19,10 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 
     <!-- Font-awesome -->
     <script src="https://kit.fontawesome.com/1a75781615.js" crossorigin="anonymous"></script>
+    
 </head>
     <body <?php body_class('body-woocommerce'); ?>>
-
+    
         <div class="top-bar">
             <div class="container">
                 <div class="row">
@@ -88,7 +89,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
                 </div>
 
                 <!-- widget direito header -->
-                <div class="head-widget-right content col-md-8 col-lg-4 col-12 py-2 d-flex align-items-center justify-content-center">
+                <div class="head-widget-right content col-12 col-md-12 col-lg-4 col-xl-4  py-2 d-flex align-items-center justify-content-center">
                     <?php if ( is_active_sidebar( 'right_header_sidebar' ) ) : ?>
                         <?php dynamic_sidebar( 'right_header_sidebar' ); ?>
                     <?php endif; ?>
@@ -109,7 +110,7 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
 
         <div id="menuprincipal" class="justify-content-center">
 		
-        <?php if(is_home() || is_front_page() || is_product() || is_product_category() && is_active_sidebar( 'menu_principal_sidebar' )){
+        <?php if(is_home() || is_front_page() || is_product() || is_search() || is_product_category() && is_active_sidebar( 'menu_principal_sidebar' )){
             dynamic_sidebar( 'menu_principal_sidebar' );
         } 
         ?> 
@@ -132,3 +133,4 @@ if( get_theme_mod( 'header_img_bg' ) != '') { // if there is a background img
             <div class="container geral">
                 <div class="row">
                     <div class="col-12">
+                        

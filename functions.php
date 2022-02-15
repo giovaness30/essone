@@ -1,13 +1,5 @@
 <?php
 
-/* Limite de Un por lote envio API-Rest */
-function to_large_api_variations( $limit ) {
-  $limit = 400;
-
-  return $limit;
-}
-add_filter( 'woocommerce_rest_batch_items_limit', 'to_large_api_variations' );
-
 //Title site
 function essone_title_tag(){
   add_theme_support('title-tag');
@@ -159,7 +151,7 @@ function right_header_sidebar() {
        'name' => __( 'Cabeçalho - Widget Direito', 'essone'),
        'id' => 'right_header_sidebar',
        'description' => __( 'Shortcodes geralmente usados = [user-icon][whats-icon][cart-ess]', 'essone' ),
-       'before_widget' => '<div class="py-3 pl-2">',
+       'before_widget' => '<div class="py-3 pl-2 d-flex align-items-center">',
        'after_widget' => '</div>',
        'before_title' => '<span class="hidden">',
        'after_title' => '</span>',
@@ -336,14 +328,28 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 //######################### ALTERAÇÔES WOOCOMMERCE #########################//
 
 //Texto Fora de estoque
+
+// Faz verificação do estoque vaiações.
+function is_variable_product_out_of_stock($product) {
+  $variation_ids = $product->get_visible_children();
+  foreach($variation_ids as $variation_id) {
+      $variation = wc_get_product($variation_id);
+      if ($variation->is_in_stock())
+          return false;
+  }
+  return true;
+}
+
+// Aplica o filtro.
  add_filter( 'woocommerce_loop_add_to_cart_link', 'essone_message_after_prices', 10, 3 );
 function essone_message_after_prices( $add_to_cart_html, $product, $args ){
-    if( !$product->is_in_stock() ){
+    if( !$product->is_in_stock() or ($product->is_type('variable') and is_variable_product_out_of_stock($product)) ){
       global $woocommerce;
         $add_to_cart_html = '<div class="essone-out-of-stock">Fora de Estoque</div>' . $add_to_cart_html;
     }
     return $add_to_cart_html;
 }
+
 
 //Remove senha dificil
 function wc_ninja_remove_password_strength() {
@@ -477,7 +483,7 @@ add_action('init','essone_custom_roles');
 add_filter( 'the_title', 'shorten_woo_product_title', 10, 2 );
 function shorten_woo_product_title( $title, $id ) {
   if (get_theme_mod('essone_letter_title_prod') != ''){$title_prod = get_theme_mod('essone_letter_title_prod');}else{ $title_prod = 20;};
-    if ( ! is_singular( array( 'product' ) ) && get_post_type( $id ) === 'product' && strlen( $title ) > $title_prod ) {
+    if ( ! is_singular( array( 'product' ) ) && get_post_type( $id ) === 'product' && strlen( $title ) > $title_prod && in_the_loop() )  {
         return substr( $title, 0, $title_prod) . '…'; // change last number to the number of characters you want
     } else {
         return $title;
@@ -499,4 +505,123 @@ if ( ! is_admin() && $domain === 'woocommerce' && $translated_text === 'Leia mai
 $translated_text = 'Ver mais';
 }
 return $translated_text;
+}
+
+/**
+ * Validação se foi selecionado opção de entrega antes de fechar venda.
+ */
+if (get_theme_mod('no_default_method','hide') == 'show'){
+  add_action( 'woocommerce_checkout_process', 'shipping_method_validation', 20 );
+}
+
+function shipping_method_validation() {
+    if (! isset( $_POST['shipping_method'] ) ){
+        wc_add_notice( __( "-->Por Favor Selecione a Forma de Entrega!", "woocommerce" ), 'error' );
+    }
+    if (! isset( $_POST['payment_method'] ) ){
+      wc_add_notice( __( "-->Por Favor Selecione a forma de Pagamento!", "woocommerce" ), 'error' );
+
+  }
+}
+
+/**
+ * Excluir e ocultar categoria de produtos da página loja
+ */
+function custom_pre_get_posts_query( $q ) {
+  $tax_query = (array) $q->get( 'tax_query' );
+  $tax_query[] = array(
+         'taxonomy' => 'product_cat',
+         'field' => 'slug',
+         'terms' => array( 'inativos' ), // Defina aqui qual categoria não mostrar.
+         'operator' => 'NOT IN'
+  );
+  $q->set( 'tax_query', $tax_query );
+}
+add_action( 'woocommerce_product_query', 'custom_pre_get_posts_query' );
+
+/* Limite de Unidades por lote envio API-Rest */
+function to_large_api_variations( $limit ) {
+  $limit = 400;
+
+  return $limit;
+}
+add_filter( 'woocommerce_rest_batch_items_limit', 'to_large_api_variations' );
+
+// Adiciona Botão na página do carrinho para limpar todos produtos.
+add_action( 'woocommerce_cart_coupon', 'custom_woocommerce_empty_cart_button' );
+function custom_woocommerce_empty_cart_button() {
+	echo '<a href="' . esc_url( add_query_arg( 'empty_cart', 'yes' ) ) . '" class="button ml-4" title="' . esc_attr( 'Empty Cart', 'woocommerce' ) . '">' . esc_html( 'Limpar Carrinho', 'woocommerce' ) . '</a>';
+}
+
+add_action( 'wp_loaded', 'custom_woocommerce_empty_cart_action', 20 );
+function custom_woocommerce_empty_cart_action() {
+	if ( isset( $_GET['empty_cart'] ) && 'yes' === esc_html( $_GET['empty_cart'] ) ) {
+		WC()->cart->empty_cart();
+
+		$referer  = wp_get_referer() ? esc_url( remove_query_arg( 'empty_cart' ) ) : wc_get_cart_url();
+		wp_safe_redirect( $referer );
+	}
+}
+
+/*
+ * Adicionar Ação em massa nas Opções para editar Pedidos Woocommerce
+ * 
+ */
+add_filter( 'bulk_actions-edit-shop_order', 'my_register_bulk_action' ); // edit-shop_order is the screen ID of the orders page
+
+function my_register_bulk_action( $bulk_actions ) {
+
+$bulk_actions['mark_change_status_to_cancelled'] = 'Mudar status para cancelado'; // <option value="mark_awaiting_shipment">Order Cancel</option>
+return $bulk_actions;
+
+}
+
+add_action( 'admin_action_mark_change_status_to_cancelled', 'my_bulk_process_custom_status' ); // admin_action_{action name}
+
+function my_bulk_process_custom_status() {
+
+
+// if an array with order IDs is not presented, exit the function
+if( !isset( $_REQUEST['post'] ) && !is_array( $_REQUEST['post'] ) )
+    return;
+
+foreach( $_REQUEST['post'] as $order_id ) {
+
+    $order = new WC_Order( $order_id );
+    $order_note = 'Alteração em Massa:';
+    $order->update_status( 'cancelled', $order_note, true ); // "my-shipment" is the order status name 
+}
+
+// of course using add_query_arg() is not required, you can build your URL inline
+$location = add_query_arg( array(
+        'post_type' => 'shop_order',
+    'mark_change_status_to_cancelled' => 1, // mark_change_status_to_cancelled=1 is just the $_GET variable for notices
+    'changed' => count( $_REQUEST['post'] ), // number of changed orders
+    'ids' => join( $_REQUEST['post'], ',' ),
+    'post_status' => 'all'
+), 'edit.php' );
+
+wp_redirect( admin_url( $location ) );
+exit;
+
+}
+/*
+ * Notices
+ */
+add_action('admin_notices', 'my_custom_order_status_notices');
+
+function my_custom_order_status_notices() {
+
+  global $pagenow, $typenow;
+
+  if( $typenow == 'shop_order' 
+  && $pagenow == 'edit.php'
+  && isset( $_REQUEST['mark_change_status_to_cancelled'] )
+  && $_REQUEST['mark_change_status_to_cancelled'] == 1
+  && isset( $_REQUEST['changed'] ) ) {
+
+      $message = sprintf( _n( 'Status do Pedidos Alterado', '%s order statuses changed.', $_REQUEST['changed'] ), number_format_i18n( $_REQUEST['changed'] ) );
+      echo "<div class=\"updated\"><p>{$message}</p></div>";
+
+  }
 }

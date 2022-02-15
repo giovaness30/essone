@@ -45,3 +45,20 @@ if(urlSite.indexOf('carrinho') != -1){
 document.querySelector('#calc_shipping_state_field span').style.width = "100%"
 
 }
+
+const shareButton = document.querySelector('a.share');
+shareButton.addEventListener('click', shareContent);
+
+function shareContent() {
+if (navigator.share) {
+  navigator.share({
+    title: 'Compartilhado',
+    url: window.location.href
+  }).then(() => {
+    console.log('Compartilhado com sucesso!');
+  })
+  .catch(console.error);
+ } else {
+   // fallback
+ }
+}

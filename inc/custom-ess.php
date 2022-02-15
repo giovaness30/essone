@@ -101,8 +101,8 @@ function shortcodeContatoLoja()
     <h4>Contatos:</h4>
     
     </div>
-    <p>Telefone: '. get_theme_mod('essone_contat_phone', '(dd) nnnnn-nnnn') .'</p>
-    <p>E-mail: '. get_theme_mod('essone_contat_email', 'email@email.com') .'</p>
+    <a href="tel:'. get_theme_mod('essone_contat_phone', '(dd) nnnnn-nnnn') .'"><p>Telefone: '. get_theme_mod('essone_contat_phone', '(dd) nnnnn-nnnn') .'</p></a>
+    <a href="mailto:'. get_theme_mod('essone_contat_email', 'email@email.com') .'"><p>E-mail: '. get_theme_mod('essone_contat_email', 'email@email.com') .'</p></a>
     <div class="">
     
         </div>

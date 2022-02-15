@@ -30,6 +30,8 @@ body a{
 }
 
 
+
+
 /*------------------------------------------ HEADER
 ---------------------------------------------------------------------------------------------------------*/
 
@@ -214,8 +216,31 @@ body a{
 
 .description-catalog{
     color: #000;
-    padding-bottom: 3em;
+    /* padding-bottom: 3em; */
 
+}
+
+/* Amplia o thumbnail na pagina de produto dos produtos em Grupo */
+img.grouped-image{
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    /* position: absolute; */
+    width: 35px;
+    border-radius: 5px;
+}
+
+img.grouped-image:hover {
+    -moz-transform: scale(3)!important;
+    -webkit-transform: scale(3)!important;
+    transform: scale(3)!important;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;
+    margin: 30% 55%;
+}
+
+/* input cupon carrinho */
+input#coupon_code{
+    min-width: 140px;
 }
 
 /*------------------------------------------ FOOTER
@@ -278,6 +303,10 @@ margin-bottom: 0;
         margin-left: 0.5rem;
 
     }
+ }
+ /* Menor que Celular */
+@media screen and (min-width: 300px) and (max-width: 413px) {
+
  }
 
 /**/

@@ -242,6 +242,18 @@ function cd_customizer_settings( $wp_customize ) {
         'settings'   => 'primary_text_color',
     ) ) );
 
+    /* Cor dos Links*/
+    $wp_customize->add_setting( 'primary_link_color' , array(
+        'default'     => '#4d932c',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'primary_link_color', array(
+        'label'        => 'Cor dos Links',
+        'section'    => 'body_section_colors',
+        'settings'   => 'primary_link_color',
+    ) ) );
+
     /* Cor Primária*/
     $wp_customize->add_setting( 'primary_color' , array(
         'default'     => '#4d932c',
@@ -511,6 +523,85 @@ function cd_customizer_settings( $wp_customize ) {
     )
     );
 
+    // Imagem de produtos em grupo
+    $wp_customize->add_setting( 'essone_thumbnail_grouped' , array(
+        'default'     => '0',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_thumbnail_grouped', array(
+        'label' => 'Mostar Thumbnail(fotos) do Produtos em Grupo ?',
+        'section' => 'prod_section_pag',
+        'settings' => 'essone_thumbnail_grouped',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    /* Tamanho Fonte Preço de produtos */
+    $wp_customize->add_setting( 'essone_font_price_prod_pag' , array(
+        'default'     => 12,
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_price_prod_pag', array(
+        'label'	=>  'Tamanho Fonte Preço dos produtos (pt)',
+        'min' => 6,
+        'max' => 25,
+        'step' => 1,
+        'section' => 'prod_section_pag',
+    ) ) );
+
+    /* Cor preço produtos*/
+    $wp_customize->add_setting( 'essone_color_price_pag' , array(
+        'default'     => '#77a464',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_color_price_pag', array(
+        'label'        => 'Cor do Preço',
+        'section'    => 'prod_section_pag',
+        'settings'   => 'essone_color_price_pag',
+    ) ) );
+
+    // negrito no preço
+    $wp_customize->add_setting( 'essone_bold_price' , array(
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_bold_price', array(
+        'label' => 'Preço dos produto em NEGRITO ?',
+        'section' => 'prod_section_pag',
+        'settings' => 'essone_bold_price',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    // Botão Compartilhar
+    $wp_customize->add_setting( 'essone_shared_prod_pag' , array(
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'essone_shared_prod_pag', array(
+        'label' => 'Link para Compartilhar produto ?',
+        'section' => 'prod_section_pag',
+        'settings' => 'essone_shared_prod_pag',
+        'type' => 'checkbox',
+        'std'  => '0'
+        ) );
+
+    /* Texto ao lado preço promoção */
+	$wp_customize->add_setting( 'essone_text_promo_single');
+
+    $wp_customize->add_control('essone_text_promo_single', array(
+      'type'      => 'text',
+      'settings'  => 'essone_text_promo_single',
+      'label'    => 'Texto ao lado do preço em Promoção',
+      'section'  => 'prod_section_pag',
+      'priority' => 2,
+      'description' => 'Quando sem conteudo = Texto não é Mostrado.',
+    )
+    );
+
     // ---------- Catalogo de Produtos
     
     /* Altera padrão da div de cada produto no Catálogo */
@@ -577,11 +668,37 @@ function cd_customizer_settings( $wp_customize ) {
     ) );
     
     $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_title_prod', array(
-        'label'	=>  'Tamanho Fonte dos Produtos "pt"',
+        'label'	=>  'Tamanho Fonte dos Produtos (pt)',
         'min' => 6,
         'max' => 25,
         'step' => 1,
         'section' => 'prod_section_catalog',
+    ) ) );
+
+    /* Tamanho Fonte Preço de produtos */
+    $wp_customize->add_setting( 'essone_font_price_prod' , array(
+        'default'     => 12,
+        'transport'   => 'refresh',
+    ) );
+    
+    $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_price_prod', array(
+        'label'	=>  'Tamanho Fonte Preço dos produtos (pt)',
+        'min' => 6,
+        'max' => 25,
+        'step' => 1,
+        'section' => 'prod_section_catalog',
+    ) ) );
+
+    /* Cor preço produtos*/
+    $wp_customize->add_setting( 'essone_color_price_catalog' , array(
+        'default'     => '#77a464',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'essone_color_price_catalog', array(
+        'label'        => 'Cor do Preço',
+        'section'    => 'prod_section_catalog',
+        'settings'   => 'essone_color_price_catalog',
     ) ) );
 
     /* Tamanho Fonte ShortDescription dos itens */
@@ -591,7 +708,7 @@ function cd_customizer_settings( $wp_customize ) {
     ) );
     
     $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'essone_font_description_catalog', array(
-        'label'	=>  'Tamanho Fonte Descrição dos Produtos. "pt"',
+        'label'	=>  'Tamanho Fonte Descrição dos Produtos. (pt)',
         'min' => 6,
         'max' => 25,
         'step' => 1,
@@ -659,6 +776,23 @@ function cd_customizer_settings( $wp_customize ) {
         ),
         ) );
 
+    $wp_customize->add_setting( 'no_default_method' , array(
+        'default'     => 'hide',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'no_default_method', array(
+        'label' => 'Forma de entrega Desmarcada',
+        'description' => 'Cliente ao finalizar a compra, tem que selecionar manualmente a forma de entrega.(Essa opção força o cliente a selecionar e não finaliza a venda enquanto não marcar)',
+        'section' => 'checkout_section',
+        'settings' => 'no_default_method',
+        'type' => 'radio',
+        'choices' => array(
+            'show' => 'Habilitado',
+            'hide' => 'Desabilitado',
+        ),
+        ) );
+
     // ---------- Estilo da Página
 
         // Layout pagina
@@ -704,6 +838,19 @@ function cd_customizer_settings( $wp_customize ) {
             'label' => 'Habilita separador Widgets lateral',
             'section' => 'layout',
             'settings' => 'essone_pag_layout_style',
+            'type' => 'checkbox',
+            'std'  => '0'
+            ) );
+
+        // Whatsapp Flutuante
+        $wp_customize->add_setting( 'essone_whats_flut' , array(
+            'transport'   => 'refresh',
+        ) );
+    
+        $wp_customize->add_control( 'essone_whats_flut', array(
+            'label' => 'Habilita Icone Whatsapp Flutuando na tela?',
+            'section' => 'layout',
+            'settings' => 'essone_whats_flut',
             'type' => 'checkbox',
             'std'  => '0'
             ) );
@@ -844,8 +991,8 @@ function cd_customizer_settings( $wp_customize ) {
 
     ));	
 
-    $wp_customize->add_control( 'topbar_whatss', array(
-          'type'     => 'code',
+    $wp_customize->add_control( 'text_painel_login', array(
+          'type'     => 'text',
           'settings'  => 'text_painel_login',
           'label'    => __( 'Texto do botão login no painel do cabeçalho do site', 'essystemstart2' ),
           'section'  => 'p-user',

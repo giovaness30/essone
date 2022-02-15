@@ -28,11 +28,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 		<div class="u-columns row" id="customer_login">
 		
-			<div class="u-column1 col-6">
+			<div class="u-column1 col-12 col-md-6 col-lg-6">
 		
 		<?php endif; ?>
 		
-				<h2><?php esc_html_e( 'Login', 'woocommerce' ); ?></h2>
+				<h2><?php esc_html_e( 'Já tem Cadastro?..', 'woocommerce' ); ?></h2>
 		
 				<form class="woocommerce-form woocommerce-form-login login" method="post">
 		
@@ -68,9 +68,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 		
 			</div>
 		
-			<div class="u-column2 col-6">
+			<div class="u-column2 col-12 col-md-6 col-lg-6">
 		
-				<h2><?php esc_html_e( 'Register', 'woocommerce' ); ?></h2>
+				<h2><?php esc_html_e( 'Se não pode se registrar aqui..', 'woocommerce' ); ?></h2>
 		
 				<form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action( 'woocommerce_register_form_tag' ); ?> >
 		
@@ -123,6 +123,24 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 
 ?>
+<script>
+function clearShippingFunction() {
+  setTimeout(function(){ 
+	<?php if (get_theme_mod('no_default_method','hide') == 'show') : ?>
+	
+		var urlSite = window.location.pathname;
+		var qtymethod = document.querySelectorAll(".shipping_method").length;
+		var qtypaymethod = document.querySelectorAll("[name=payment_method]").length;
+		if(urlSite.indexOf('finalizar-compra') != -1){
+		for(let i = 0 ; i < qtymethod ; i++){document.querySelectorAll(".shipping_method")[i].checked = false;};
+		for(let i = 0 ; i < qtypaymethod ; i++){document.querySelectorAll("[name=payment_method]")[i].checked = false;};
+		};
+	
+<?php endif ?>
+
+   }, 2200);
+}
+</script>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 <div class="row">
@@ -150,12 +168,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 	<div id="order_review" class="woocommerce-checkout-review-order">
+		
 		<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-	</div>
 
+	</div>
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 	</div>
+	
+	
 </div>
-</form>
 
-<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+</form>
+<script>clearShippingFunction();</script>
